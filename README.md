@@ -1,0 +1,2 @@
+# CourseSelectionManageSystem
+基于微信小程序的学生选课管理系统
