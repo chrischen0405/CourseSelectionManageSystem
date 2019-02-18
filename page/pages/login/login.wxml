@@ -1,0 +1,16 @@
+<view class='container'>
+  <view class='header'>
+  <text>选课管理系统</text>
+  </view>
+  <view class='section'>
+  <text>账号：</text>
+  <input type='number' name='userId' placeholder='请输入账号'/>
+  </view>
+  <view class='section'>
+  <text>密码：</text>
+  <input password='true' name='userPwd' placeholder='请输入密码'/>
+  </view>
+  <view class='section'>
+  <button type='primary' class='myBtn'>登录</button>
+  </view>
+</view >
