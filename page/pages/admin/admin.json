@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mCourse": "mCourse/mCourse",
+    "mStudents": "mStudents/mStudents",
+    "mSelect": "mSelect/mSelect"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "allCourse":"allCourse/allCourse",
+    "myCourse":"myCourse/myCourse"
+  }
+}

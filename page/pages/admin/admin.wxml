@@ -1,0 +1,14 @@
+<!--pages/admin/admin.wxml-->
+<view class='container'>
+
+  <view class='tab-wrapper'>
+    <view id='firstTab' class='tab-first {{currentTab === 0 ? "tab-active":""}}' bindtap='switchTab'>课程管理</view>
+    <view id='secondTab' class='tab-second {{currentTab === 1 ? "tab-active" : ""}}' bindtap='switchTab'>用户管理</view>
+    <view id='thirdTab' class='tab-third {{currentTab === 2 ? "tab-active" : ""}}' bindtap='switchTab'>用户管理</view>
+  </view>
+
+  <view class='content-wrapper' wx:if='{{currentTab === 0}}'><mCourse/></view>
+  <view class='content-wrapper' wx:if='{{currentTab === 1}}'><mStudents/></view>
+  <view class='content-wrapper' wx:if='{{currentTab === 2}}'><mSelect/></view>
+
+</view>
