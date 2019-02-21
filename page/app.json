@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/student/student",
     "pages/index/index",
     "pages/logs/logs",
     "pages/login/login",
-    "pages/student/student",
     "pages/admin/admin"
   ],
   "window": {
