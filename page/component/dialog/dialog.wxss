@@ -1,0 +1,74 @@
+/* component/dialog/dialog.wxss */
+.my-dialog {
+  opacity: 1;
+}
+.my-dialog .my-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+.my-dialog .my-container {
+  position: fixed;
+  width: 80%;
+  max-width: 300px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 5000;
+}
+.my-dialog .my-container .title {
+  display: inline-block;
+  width: 100%;
+  margin: 20rpx 0 0 0;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+  color: #303133;
+}
+.my-dialog .my-container .content {
+  margin: 10rpx 0 20rpx;
+  display: inline-block;
+  width: 100%;
+  line-height: 50rpx;
+  text-align: left;
+}
+.my-dialog .my-container .content .row {
+  margin: 0 10%;
+  width: 80%;
+  font-size: 26rpx;
+  color: #606266;
+  word-break: break-all;
+}
+.my-dialog .my-container .btn-row {
+  padding: 10rpx 0 0;
+  display: inline-block;
+  width: 100%;
+  height: 68rpx;
+  line-height: 68rpx;
+  font-size: 18px;
+  border-top: 1rpx solid #c0c4cc;
+}
+.my-dialog .my-container .btn-row .confirm {
+  float: right;
+  width: 50%;
+  height: 100%;
+  color: #86c2ec;
+}
+.my-dialog .my-container .btn-row .cancel {
+  color: #606266;
+  float: right;
+  width: calc(50% - 2rpx);
+  height: 100%;
+  border-right: 1rpx solid #c0c4cc;
+}

@@ -1,0 +1,14 @@
+<!--component/dialog/dialog.wxml-->
+<view class="my-dialog" hidden="{{!showDialog}}">
+  <view class="my-mask"></view>
+  <view class="my-container">
+    <view class="title">{{title}}</view>
+    <view class="content">
+      <view class="row" wx:for="{{content}}" wx:for-index="index" wx:for-item="item" wx:key="index">{{item.label}}：{{item.value}}</view>
+    </view>
+    <view class="btn-row">
+      <view class="cancel" bindtap='_cancel'>{{cancelText}}</view>
+      <view class="confirm" bindtap="_confirm">{{confirmText}}</view>
+    </view>
+  </view>
+</view>

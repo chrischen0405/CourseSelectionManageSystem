@@ -18,8 +18,14 @@
   </view>
   <!--课表-->
   <view wx:for="{{courseList}}">
-    <view class="flex-item kcb-item" bindtap="showCardView" data-statu="open" data-index="{{index}}" style="margin-left:{{(item.xqj-1)*100}}rpx;margin-top:{{(item.skjc-1)*100+5}}rpx;height:{{item.skcd*100-5}}rpx;background-color:{{colorArrays[index%9]}}">
-      <view class="smalltext">{{item.kcmc}}</view>
+    <view class="flex-item kcb-item" bindtap="showCardView" data-statu="open" data-index="{{item.id}}" style="margin-left:{{(item.week-1)*100}}rpx;margin-top:{{(item.cstart-1)*100+5}}rpx;height:{{item.ctime*100-5}}rpx;background-color:{{colorArrays[index%9]}}">
+      <view class="smalltext">{{item.cname}}{{item.classroom}}</view>
     </view>
   </view>
 </view>
+<!-- 课程详情 -->
+<dialog id="dialog" title="课程详情" confirmText="退课" cancelText="取消" content="{{dialogContent}}" bind:cancel="handleCancelDialog" bind:confirm="handleConfirmDialog">
+</dialog>
+<!-- 退课提示框 -->
+<dialog id="tkdialog" title="确定退选该课程？" confirmText="退课" cancelText="取消" bind:cancel="handleCancelDialog2" bind:confirm="handleConfirmDialog2">
+</dialog>
