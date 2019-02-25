@@ -1,1 +1,19 @@
 /* pages/student/allCourse/allCourse.wxss */
+.myCell {
+	position: relative;
+	display: flex;
+	padding: 15px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border-bottom: 1px solid #dadada;
+}
+
+.oneCell {
+	display: inline-block;
+}
+ 
+.cellText {
+	font-size: 14px;
+	color: #000;
+}

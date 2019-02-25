@@ -1,2 +1,11 @@
 <!--pages/student/allCourse/allCourse.wxml-->
-<text>pages/student/allCourse/allCourse.wxml</text>
+<block wx:for="{{courseList}}">
+	<view class="myCell" bindtap='clickCell' data-index='{{item.index}}'>
+		<view class="oneCell">
+			<view class="cellText"> 课程编号：{{item.id}} </view>
+      <view class="cellText"> 课程名称：{{item.cname}} </view>
+      <view class="cellText"> 教室：{{item.classroom}} </view>
+      <view class="cellText"> 教师：{{item.teacher}} </view>
+		</view>
+	</view>
+</block>
