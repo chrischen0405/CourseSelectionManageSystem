@@ -1,1 +1,47 @@
 /* pages/admin/mCourse/mCourse.wxss */
+/* 搜索框 */
+
+.searchBar {
+  padding: 1% 3%;
+  background: #d2e6b3;
+  display: flex;
+  flex-direction: row;
+}
+
+.searchBar input {
+  width: 78%;
+  border-radius: 5px;
+  background: #fff;
+  border: none;
+  font-size: 12px;
+  padding: 1% 2.5%;
+  margin-right: 5px;
+}
+
+.searchBar button {
+  text-align: center;
+  border: none;
+  font-size: 28rpx;
+  background: #fff;
+}
+
+/* 课程列表 */
+
+.myCell {
+  position: relative;
+  display: flex;
+  padding: 15px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid #dadada;
+}
+
+.oneCell {
+  display: inline-block;
+}
+
+.cellText {
+  font-size: 14px;
+  color: #000;
+}
