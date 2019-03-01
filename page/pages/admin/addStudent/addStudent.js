@@ -1,4 +1,4 @@
-// pages/admin/mSelect/mSelect.js
+// pages/admin/addStudent/addStudent.js
 Component({
   /**
    * 组件的属性列表

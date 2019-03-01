@@ -18,7 +18,7 @@
   background: #fff;
 }
 
-.tab-first, .tab-second, .tab-third{
+.tab-first, .tab-second, .tab-third, .tab-forth{
   flex: 1;
   font-size: 32rpx;
   color: #000;

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab: 1
+    currentTab: 2
   },
   switchTab: function (e) {
     console.log(e)
@@ -16,6 +16,8 @@ Page({
       this.setData({ currentTab: 1 })
     } else if (tab === 'thirdTab') {
       this.setData({ currentTab: 2 })
+    } else if (tab === 'forthTab') {
+      this.setData({ currentTab: 3 })
     }
   },
 

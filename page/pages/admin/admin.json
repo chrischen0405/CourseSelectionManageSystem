@@ -2,6 +2,7 @@
   "usingComponents": {
     "mCourse": "mCourse/mCourse",
     "mStudents": "mStudents/mStudents",
-    "mSelect": "mSelect/mSelect"
+    "addCourse": "addCourse/addCourse",
+    "addStudent": "addStudent/addStudent"
   }
 }

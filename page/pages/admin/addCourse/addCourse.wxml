@@ -1,0 +1,6 @@
+<!--pages/admin/addCourse/addCourse.wxml-->
+<view class='info'>
+  <label class='info-text'>姓名：</label>
+  <input class='info-input' placeholder='请输入学生姓名'></input>
+</view>
+<button class='submit' bindtap='submit'>提交</button>
