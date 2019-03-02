@@ -43,10 +43,6 @@ Component({
           value: data.courseList[num].classroom
         },
         {
-          label: '课程名称',
-          value: data.courseList[num].cname
-        },
-        {
           label: '上课时间',
           value: '星期' + data.courseList[num].week + ' 第' + data.courseList[num].cstart + '节课'
         },

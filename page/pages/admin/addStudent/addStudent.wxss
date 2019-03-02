@@ -1,1 +1,50 @@
 /* pages/admin/addStudent/addStudent.wxss */
+page{
+   /* background: #d2e6b3; */
+}
+.info{
+    border-bottom: 1rpx solid #ccc;
+  /* background: #d2e6b3; */
+  margin-top: 20rpx;
+  overflow: hidden;
+  line-height: 100rpx;
+}
+.info-text{
+  float: left;
+  height: 100rpx;
+  margin-left: 80rpx;
+}
+.info-input{
+  height: 80rpx;
+  margin-left: 50rpx;
+  margin-top: 10rpx;
+  color: #777;
+  float: left;
+  /* border: 1rpx solid #000; */
+}
+/* 下拉框 */
+.picker{
+  margin-left: 50rpx;
+  height: 100rpx;
+  width: 400rpx;
+  float: left;
+}
+/* 按钮 */
+.button{
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  background: #33FF99;
+  float: left;
+  margin-left: 10rpx;
+  margin-top: 15rpx;
+  color: #FFFFFF;
+}
+.submit{
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  background: #fff;
+  color: #000;
+}

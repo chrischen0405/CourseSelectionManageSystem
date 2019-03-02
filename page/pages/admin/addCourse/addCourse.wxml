@@ -1,6 +1,46 @@
 <!--pages/admin/addCourse/addCourse.wxml-->
 <view class='info'>
-  <label class='info-text'>姓名：</label>
-  <input class='info-input' placeholder='请输入学生姓名'></input>
+  <label class='info-text'>课程名称：</label>
+  <input class='info-input' placeholder='请输入课程名称'></input>
+</view>
+<view class='info'>
+  <label class='info-text picker-text'>教室：</label>
+  <picker bindchange='bindPickerChangeClassroom' value='0'  range='{{classroomList}}'>
+    <view class='picker'>
+      {{classroomList[index1]}}
+    </view>
+  </picker>
+</view>
+<view class='info'>
+  <label class='info-text picker-text'>教师：</label>
+  <picker bindchange='bindPickerChangeTeacher'  range='{{teacherList}}'>
+    <view class='picker'>
+      {{teacherList[index2]}}
+    </view>
+  </picker>
+</view>
+<view class='info'>
+  <label class='info-text picker-text'>星期：</label>
+  <picker bindchange='bindPickerChangeWeek'  range='{{weekList}}'>
+    <view class='picker'>
+      {{weekList[index3]}}
+    </view>
+  </picker>
+</view>
+<view class='info'>
+  <label class='info-text picker-text'>上课时间：</label>
+  <picker bindchange='bindPickerChangeStart'  range='{{startList}}'>
+    <view class='picker'>
+      {{startList[index4]}}
+    </view>
+  </picker>
+</view>
+<view class='info'>
+  <label class='info-text picker-text'>课时数：</label>
+  <picker bindchange='bindPickerChangeTime'  range='{{timeList}}'>
+    <view class='picker'>
+      {{timeList[index5]}}
+    </view>
+  </picker>
 </view>
 <button class='submit' bindtap='submit'>提交</button>
