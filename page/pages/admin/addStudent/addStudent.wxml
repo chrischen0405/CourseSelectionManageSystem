@@ -1,26 +1,32 @@
 <!--pages/admin/addStudent/addStudent.wxml-->
-<view class='info'>
-  <label class='info-text'>姓名：</label>
-  <input class='info-input' placeholder='请输入学生姓名'></input>
-</view>
-<view class='info'>
-  <label class='info-text picker-text'>分院：</label>
-  <picker bindchange='bindPickerChange'  range='{{collegeList}}'>
-    <view class='picker'>
-      {{collegeList[index1]}}
+<view class='container'>
+  <view class='info'>
+    <label class='info-text'>姓名：</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入学生姓名'></input>
     </view>
-  </picker>
-</view>
-<view class='info'>
-  <label class='info-text picker-text'>专业：</label>
-  <picker bindchange='bindPickerChange2'  range='{{professionList}}'>
-    <view class='picker'>
-      {{professionList[index2]}}
+  </view>
+  <view class='info'>
+    <label class='info-text picker-text'>分院：</label>
+    <picker bindchange='bindPickerChange' range='{{collegeList}}'>
+      <view class='picker'>
+        {{collegeList[index1]}}
+      </view>
+    </picker>
+  </view>
+  <view class='info'>
+    <label class='info-text picker-text'>专业：</label>
+    <picker bindchange='bindPickerChange2' range='{{professionList}}'>
+      <view class='picker'>
+        {{professionList[index2]}}
+      </view>
+    </picker>
+  </view>
+  <view class='info'>
+    <label class='info-text'>班级：</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入学生班级'></input>
     </view>
-  </picker>
+  </view>
+  <button class='submit' bindtap='submit'>提交</button>
 </view>
-<view class='info'>
-  <label class='info-text'>班级：</label>
-  <input class='info-input' placeholder='请输入学生班级'></input>
-</view>
-<button class='submit' bindtap='submit'>提交</button>
