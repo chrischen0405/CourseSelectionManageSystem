@@ -1,0 +1,4 @@
+<!--pages/test/test.wxml-->
+<view>
+  <button bindtap='bindtest'>test</button>
+</view>

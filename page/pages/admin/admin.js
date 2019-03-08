@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab: 2
+    currentTab: 0
   },
   switchTab: function (e) {
     console.log(e)
