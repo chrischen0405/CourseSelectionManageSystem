@@ -7,16 +7,16 @@
   </button>
 </view>
 <!-- 课程列表 -->
-<block wx:for="{{courseList}}">
-	<view class="myCell" bindtap='clickCell' data-index='{{item.id}}'>
+<view wx:for="{{courseList}}">
+	<view class="myCell" bindtap='clickCell' data-index='{{index}}'>
 		<view class="oneCell">
-			<view class="cellText"> 课程编号：{{item.id}} </view>
+			<view class="cellText"> 课程编号：{{item.cid}} </view>
       <view class="cellText"> 课程名称：{{item.cname}} </view>
       <view class="cellText"> 教室：{{item.classroom}} </view>
       <view class="cellText"> 教师：{{item.teacher}} </view>
 		</view>
 	</view>
-</block>
+</view>
 <!-- 课程详情 -->
 <dialog id="dialog" title="课程详情" confirmText="选课" cancelText="取消" content="{{dialogContent}}" bind:cancel="handleCancelDialog" bind:confirm="handleConfirmDialog">
 </dialog>

@@ -6,7 +6,7 @@
     <view id='tabright' class='tab-right {{currentTab === 1 ? "tab-active" : ""}}' bindtap='switchTab'>我的课表</view>
   </view>
 
-  <view class='content-wrapper' wx:if='{{currentTab === 0}}'><allCourse/></view>
+  <view class='content-wrapper' wx:if='{{currentTab === 0}}'><allCourse id='allCourse'/></view>
   <view class='content-wrapper' wx:if='{{currentTab === 1}}'><myCourse/></view>
 
 </view>
