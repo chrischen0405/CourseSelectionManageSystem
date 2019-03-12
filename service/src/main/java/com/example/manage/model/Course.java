@@ -19,15 +19,13 @@ public class Course implements Serializable {
     @Column(nullable = false, unique = false)
     private String cname;
     @Column(nullable = false, unique = false)
-    private int week;
-    @Column(nullable = false, unique = false)
-    private int cstart;
-    @Column(nullable = false, unique = false)
     private int ctime;
     @Column(nullable = false, unique = false)
     private String classroom;
     @Column(nullable = false, unique = false)
     private String teacher;
+    @Column(nullable = false, unique = false)
+    private float credit;
 
     public int getCid() {
         return cid;
@@ -47,22 +45,6 @@ public class Course implements Serializable {
 
     public void setCname(String cname) {
         this.cname = cname;
-    }
-
-    public int getWeek() {
-        return week;
-    }
-
-    public void setWeek(int week) {
-        this.week = week;
-    }
-
-    public int getCstart() {
-        return cstart;
-    }
-
-    public void setCstart(int cstart) {
-        this.cstart = cstart;
     }
 
     public int getCtime() {
@@ -87,5 +69,13 @@ public class Course implements Serializable {
 
     public void setTeacher(String teacher) {
         this.teacher = teacher;
+    }
+
+    public float getCredit() {
+        return credit;
+    }
+
+    public void setCredit(float credit) {
+        this.credit = credit;
     }
 }

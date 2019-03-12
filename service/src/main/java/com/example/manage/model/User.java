@@ -18,6 +18,14 @@ public class User implements Serializable {
     private String pwd;
     @Column(nullable = false,unique = false)
     private int type;
+    @Column(nullable = true,unique = false)
+    private String college;
+    @Column(nullable = true,unique = false)
+    private String profession;
+    @Column(nullable = true,unique = false)
+    private String stuClass;
+    @Column(nullable = true,unique = true)
+    private String wxid;
 
     public String getUid() {
         return uid;
@@ -49,5 +57,37 @@ public class User implements Serializable {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public String getStuClass() {
+        return stuClass;
+    }
+
+    public void setStuClass(String stuClass) {
+        this.stuClass = stuClass;
+    }
+
+    public String getWxid() {
+        return wxid;
+    }
+
+    public void setWxid(String wxid) {
+        this.wxid = wxid;
     }
 }
