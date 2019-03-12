@@ -15,7 +15,7 @@ public class CourseController {
 
     @RequestMapping("/getAllCourse")
     public List<Course> getAllCourse(){
-        System.out.println("测试成功");
+        System.out.println("getAllCourse成功");
         return courseRepository.findAll();
     }
 }

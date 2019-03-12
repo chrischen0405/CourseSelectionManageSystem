@@ -4,11 +4,11 @@
   </view>
   <view class='section'>
   <text>账号：</text>
-  <input type='number' name='userId' placeholder='请输入账号'/>
+  <input type='number' name='userId' placeholder='请输入账号'  bindinput='input_id'/>
   </view>
   <view class='section'>
   <text>密码：</text>
-  <input password='true' name='userPwd' placeholder='请输入密码'/>
+  <input password='true' name='userPwd' placeholder='请输入密码' bindinput='input_pwd'/>
   </view>
   <view class='section'>
   <button bindtap='login' type='primary' class='myBtn'>登录</button>
