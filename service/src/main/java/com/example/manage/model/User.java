@@ -12,7 +12,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue
     private String uid;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false, unique = false)
     private String uname;
     @Column(nullable = false,unique = false)
     private String pwd;

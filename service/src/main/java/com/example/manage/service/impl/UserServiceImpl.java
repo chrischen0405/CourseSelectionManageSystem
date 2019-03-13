@@ -6,6 +6,8 @@ import com.example.manage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -21,5 +23,50 @@ public class UserServiceImpl implements UserService {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public List<User> getAllStudent() {
+        return userRepository.findByType(2);
+    }
+
+    @Override
+    public boolean deleteStudentById(String userId) {
+        return userRepository.deleteByUid(userId);
+    }
+
+    @Override
+    public int addStudent(String userId, String userName, String college, String profession, String stuClass) {
+        User user = new User();
+        user.setUid(userId);
+        user.setUname(userName);
+        user.setPwd(userId);
+        user.setType(2);
+        user.setCollege(college);
+        user.setProfession(profession);
+        user.setStuClass(stuClass);
+        boolean isExist = userRepository.existsByUid(userId);
+        if (isExist) {
+            return 0;
+        } else {
+            userRepository.save(user);
+            return 1;
+        }
+    }
+
+    @Override
+    public int updateStudent(String userId, String userName, String college, String profession, String stuClass) {
+        User oldUser = userRepository.findByUid(userId);
+        User newUser = new User();
+        newUser.setUid(userId);
+        newUser.setUname(userName);
+        newUser.setPwd(oldUser.getPwd());
+        newUser.setType(2);
+        newUser.setCollege(college);
+        newUser.setProfession(profession);
+        newUser.setStuClass(stuClass);
+        newUser.setWxid(oldUser.getWxid());
+        userRepository.save(newUser);
+        return 1;
     }
 }

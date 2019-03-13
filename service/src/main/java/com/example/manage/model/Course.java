@@ -19,7 +19,7 @@ public class Course implements Serializable {
     @Column(nullable = false, unique = false)
     private String cname;
     @Column(nullable = false, unique = false)
-    private int ctime;
+    private String ctime;
     @Column(nullable = false, unique = false)
     private String classroom;
     @Column(nullable = false, unique = false)
@@ -47,11 +47,11 @@ public class Course implements Serializable {
         this.cname = cname;
     }
 
-    public int getCtime() {
+    public String getCtime() {
         return ctime;
     }
 
-    public void setCtime(int ctime) {
+    public void setCtime(String ctime) {
         this.ctime = ctime;
     }
 

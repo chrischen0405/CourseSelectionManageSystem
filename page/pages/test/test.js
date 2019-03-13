@@ -9,7 +9,7 @@ Page({
   },
   bindtest(){
     wx.request({
-      url: 'http://127.0.0.1:8080/getUser',
+      url: 'http://127.0.0.1:8080/getAllStudent',
       method: 'GET',
       success:function(res){
         console.log(res.data);
