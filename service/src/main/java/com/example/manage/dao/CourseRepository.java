@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface CourseRepository extends JpaRepository<Course, Integer> {
     List<Course> findAll();
+    boolean deleteByCid(int cid);
+    boolean existsByCnumAndCnameAndTeacher(String cnum,String cname,String teacher);
+
 }

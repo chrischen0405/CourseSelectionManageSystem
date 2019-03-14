@@ -27,10 +27,6 @@ public class Course implements Serializable {
     @Column(nullable = false, unique = false)
     private float credit;
 
-    public int getCid() {
-        return cid;
-    }
-
     public String getCnum() {
         return cnum;
     }
@@ -77,5 +73,13 @@ public class Course implements Serializable {
 
     public void setCredit(float credit) {
         this.credit = credit;
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
     }
 }
