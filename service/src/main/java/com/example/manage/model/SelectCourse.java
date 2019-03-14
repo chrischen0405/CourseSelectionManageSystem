@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -14,16 +15,12 @@ public class SelectCourse implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int sid;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false, unique = false)
     private String uid;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false, unique = false)
     private int cid;
-    @Column(nullable = false,unique = false)
-    private String cnum;
-    @Column(nullable = false,unique = false)
-    private String uname;
-    @Column(nullable = false,unique = false)
-    private String cname;
+    @Column(nullable = false, unique = false)
+    private Date sdate;
 
     public int getSid() {
         return sid;
@@ -45,27 +42,11 @@ public class SelectCourse implements Serializable {
         this.cid = cid;
     }
 
-    public String getCnum() {
-        return cnum;
+    public Date getSdate() {
+        return sdate;
     }
 
-    public void setCnum(String cnum) {
-        this.cnum = cnum;
-    }
-
-    public String getUname() {
-        return uname;
-    }
-
-    public void setUname(String uname) {
-        this.uname = uname;
-    }
-
-    public String getCname() {
-        return cname;
-    }
-
-    public void setCname(String cname) {
-        this.cname = cname;
+    public void setSdate(Date sdate) {
+        this.sdate = sdate;
     }
 }
