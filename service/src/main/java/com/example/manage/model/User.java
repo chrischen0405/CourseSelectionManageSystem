@@ -6,11 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 @Entity
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = IDENTITY)
+    private Long No;
+    @Column(nullable = false, unique = true)
     private String uid;
     @Column(nullable = false, unique = false)
     private String uname;

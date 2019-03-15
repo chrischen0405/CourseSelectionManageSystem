@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
 
   /**
@@ -24,7 +25,7 @@ Page({
     console.log("点击按钮!" + "获取到的账号:" + this.data.userid + "获取到的密码:" + this.data.password);
     let that = this;
     wx.request({
-      url: 'http://127.0.0.1:8080/login',
+      url: app.globalData.url + '/login',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -34,7 +35,8 @@ Page({
         'password': that.data.password
       },
       success: function(res) {
-        console.log("回调函数:" + res.data)
+        console.log("login:" + res.data);
+        that.getOneUser(that.data.userid);
         var resData = res.data;
         if (resData === 1) {
           wx.hideLoading();
@@ -72,7 +74,27 @@ Page({
           icon: 'none',
           duration: 2000
         });
-        console.log('fail');
+        console.log('loginfail');
+      }
+    })
+  },
+  getOneUser: function(userId) {
+    console.log("账号:" + userId);
+    wx.request({
+      url: app.globalData.url + '/getOneUser',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'userId': userId
+      },
+      success: function(res) {
+        app.globalData.nowUser = res.data;
+        console.log(app.globalData.nowUser);
+      },
+      fail: function() {
+        console.log('getOneUserfail');
       }
     })
   },

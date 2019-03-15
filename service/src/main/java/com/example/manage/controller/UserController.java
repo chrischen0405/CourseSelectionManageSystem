@@ -26,6 +26,12 @@ public class UserController {
         return userService.getAllStudent();
     }
 
+    @RequestMapping("/getOneUser")
+    public User getOneUser(String userId) {
+        System.out.println("getOneUser:" + userId);
+        return userService.getOneUser(userId);
+    }
+
     @RequestMapping("/deleteStudentById")
     public boolean deleteStudentById(String userid) {
         System.out.println("deleteStudentById:" + userid);

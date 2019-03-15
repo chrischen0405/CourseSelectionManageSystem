@@ -9,6 +9,8 @@ public interface UserService {
 
     List<User> getAllStudent();
 
+    User getOneUser(String userId);
+
     boolean deleteStudentById(String userId);
 
     int addStudent(String userId, String userName, String college, String profession, String stuClass);

@@ -1,9 +1,15 @@
 <!--pages/admin/addStudent/addStudent.wxml-->
 <view class='container'>
+<view class='info'>
+    <label class='info-text'>学号：</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入学生学号' bindinput='input_id'></input>
+    </view>
+  </view>
   <view class='info'>
     <label class='info-text'>姓名：</label>
     <view class='info-box'>
-      <input class='info-input' placeholder='请输入学生姓名'></input>
+      <input class='info-input' placeholder='请输入学生姓名' bindinput='input_name'></input>
     </view>
   </view>
   <view class='info'>
@@ -25,7 +31,7 @@
   <view class='info'>
     <label class='info-text'>班级：</label>
     <view class='info-box'>
-      <input class='info-input' placeholder='请输入学生班级'></input>
+      <input class='info-input' placeholder='请输入学生班级' bindinput='input_class'></input>
     </view>
   </view>
   <button class='submit' bindtap='submit'>提交</button>
