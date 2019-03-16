@@ -20,7 +20,7 @@ public class CourseController {
     }
 
     @RequestMapping("/deleteCourseById")
-    public boolean deleteCourseById(int cid) {
+    public int deleteCourseById(int cid) {
         System.out.println("deleteCourseById:" + cid);
         return courseService.deleteCourseById(cid);
     }
@@ -35,5 +35,11 @@ public class CourseController {
     public int updateCourse(int cid, String cnum, String cname, String ctime, String classroom, String teacher, float credit) {
         System.out.println("updateCourse:" + cid);
         return courseService.updateCourse(cid, cnum, cname, ctime, classroom, teacher, credit);
+    }
+
+    @RequestMapping("/searchCourse")
+    public List<Course> searchCourse(String keywords) {
+        System.out.println("search:" + keywords);
+        return courseService.search(keywords);
     }
 }

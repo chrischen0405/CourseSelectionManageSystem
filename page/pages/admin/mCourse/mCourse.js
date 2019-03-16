@@ -1,4 +1,5 @@
 // pages/admin/mCourse/mCourse.js
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -11,13 +12,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    courseList: [
-      { "id": 0, "week": 1, "cstart": 3, "ctime": 3, "cname": "高等数学1", "classroom": "理四222", "teacher": "王老师" },
-      { "id": 1, "week": 2, "cstart": 6, "ctime": 3, "cname": "高等数学2", "classroom": "理四224", "teacher": "赵老师" },
-      { "id": 2, "week": 3, "cstart": 1, "ctime": 2, "cname": "高等数学3", "classroom": "理四226", "teacher": "钱老师" },
-      { "id": 3, "week": 4, "cstart": 10, "ctime": 2, "cname": "高等数学4", "classroom": "理四223", "teacher": "孙老师" },
-      { "id": 4, "week": 5, "cstart": 4, "ctime": 1, "cname": "高等数学5", "classroom": "理四225", "teacher": "李老师" },
-    ]
+    courseList: [],
+    deleteId:0,
+    keywords:'',
   },
 
   /**
@@ -26,13 +23,15 @@ Component({
   methods: {
     clickCell(e) {
       let num = e.currentTarget.dataset.index;
+      this.setData({
+        deleteId: this.data.courseList[num].cid
+      });
       console.log(num);
       this.dialog = this.selectComponent("#dialog");
       const data = this.data;
-      const dialogContent = [
-        {
+      const dialogContent = [{
           label: '课程编号',
-          value: data.courseList[num].id
+          value: data.courseList[num].cnum
         },
         {
           label: '课程名称',
@@ -53,7 +52,8 @@ Component({
         {
           label: '教师',
           value: data.courseList[num].teacher
-        }];
+        }
+      ];
       this.setData({
         dialogContent: dialogContent
       })
@@ -66,7 +66,95 @@ Component({
     // 点击了弹出框的确认
     handleConfirmDialog() {
       this.dialog.hide();
-      console.log('ok');
+      this.deleteCourse();
     },
+    getAllCourse() {
+      let that = this;
+      wx.request({
+        url: app.globalData.url+'/getAllCourse',
+        success(res) {
+          that.setData({
+            courseList: res.data,
+          });
+        }
+      })
+    },
+    deleteCourse() {
+      wx.showLoading({
+        title: '正在删除',
+      });
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/deleteCourseById',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          'cid': that.data.deleteId
+        },
+        success: function (res) {
+          var resData = res.data;
+          if (resData) {
+            wx.hideLoading();
+            that.getAllCourse();
+            wx.showToast({
+              title: '删除成功',
+              icon: 'none',
+              duration: 2000
+            });
+          } else {
+            wx.hideLoading();
+            wx.showToast({
+              title: '删除失败',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        },
+        fail: function () {
+          wx.hideLoading();
+          wx.showToast({
+            title: '删除失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      })
+    },
+    input_keywords(e){
+      this.setData({
+        keywords: e.detail.value
+      })
+    },
+    clickSearch(){
+      let that = this;
+      if(this.data.keywords===''){
+        this.getAllCourse();
+      }else{
+        wx.request({
+          url: app.globalData.url + '/searchCourse',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+            'keywords': that.data.keywords
+          },
+          success: function (res) {
+            that.setData({
+              courseList: res.data,
+            });
+          },
+          fail: function () {
+            wx.showToast({
+              title: '查询失败',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        })
+      }
+    }
   }
 })

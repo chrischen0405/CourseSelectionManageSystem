@@ -1,4 +1,5 @@
 // pages/admin/mStudents/mStudents.js
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -11,9 +12,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    stuList: [
-      { "stuId": 31501084, "stuName": "陈文杰", "college": "计算机与计算科学学院", "profession": "计算", "stuClass": "1501"},
-    ]
+    stuList: [],
+    deleteId: '',
   },
 
   /**
@@ -22,17 +22,18 @@ Component({
   methods: {
     clickCell(e) {
       let num = e.currentTarget.dataset.index;
-      console.log(num);
+      this.setData({
+        deleteId: this.data.stuList[num].uid
+      });
       this.dialog = this.selectComponent("#dialog");
       const data = this.data;
-      const dialogContent = [
-        {
+      const dialogContent = [{
           label: '学号',
-          value: data.stuList[num].stuId
+          value: data.stuList[num].uid
         },
         {
           label: '学生姓名',
-          value: data.stuList[num].stuName
+          value: data.stuList[num].uname
         },
         {
           label: '学院',
@@ -45,7 +46,8 @@ Component({
         {
           label: '班级',
           value: data.stuList[num].stuClass + '班'
-        }];
+        }
+      ];
       this.setData({
         dialogContent: dialogContent
       })
@@ -58,7 +60,95 @@ Component({
     // 点击了弹出框的确认
     handleConfirmDialog() {
       this.dialog.hide();
-      console.log('ok');
+      this.deleteStudent();
     },
+    getAllStudent() {
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/getAllStudent',
+        success(res) {
+          that.setData({
+            stuList: res.data,
+          });
+        }
+      })
+    },
+    deleteStudent() {
+      wx.showLoading({
+        title: '正在删除',
+      });
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/deleteStudentById',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          'userid': that.data.deleteId
+        },
+        success: function(res) {
+          var resData = res.data;
+          if (resData) {
+            wx.hideLoading();
+            that.getAllStudent();
+            wx.showToast({
+              title: '删除成功',
+              icon: 'none',
+              duration: 2000
+            });
+          } else {
+            wx.hideLoading();
+            wx.showToast({
+              title: '删除失败',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        },
+        fail: function() {
+          wx.hideLoading();
+          wx.showToast({
+            title: '删除失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      })
+    },
+    input_keywords(e) {
+      this.setData({
+        keywords: e.detail.value
+      })
+    },
+    clickSearch() {
+      let that = this;
+      if (this.data.keywords === '') {
+        this.getAllStudent();
+      } else {
+        wx.request({
+          url: app.globalData.url + '/searchStudent',
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          data: {
+            'keywords': that.data.keywords
+          },
+          success: function (res) {
+            that.setData({
+              stuList: res.data,
+            });
+          },
+          fail: function () {
+            wx.showToast({
+              title: '查询失败',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        })
+      }
+    }
   }
 })

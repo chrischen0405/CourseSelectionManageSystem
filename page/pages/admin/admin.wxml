@@ -8,9 +8,17 @@
     <view id='forthTab' class='tab-forth {{currentTab === 3 ? "tab-active" : ""}}' bindtap='switchTab'>添加学生</view>
   </view>
 
-  <view class='content-wrapper' wx:if='{{currentTab === 0}}'><mCourse/></view>
-  <view class='content-wrapper' wx:if='{{currentTab === 1}}'><mStudents/></view>
-  <view class='content-wrapper' wx:if='{{currentTab === 2}}'><addCourse/></view>
-  <view class='content-wrapper' wx:if='{{currentTab === 3}}'><addStudent/></view>
+  <view class='content-wrapper' wx:if='{{currentTab === 0}}'>
+    <mCourse id='mCourse' />
+  </view>
+  <view class='content-wrapper' wx:if='{{currentTab === 1}}'>
+    <mStudents id='mStudent' />
+  </view>
+  <view class='content-wrapper' wx:if='{{currentTab === 2}}'>
+    <addCourse/>
+  </view>
+  <view class='content-wrapper' wx:if='{{currentTab === 3}}'>
+    <addStudent/>
+  </view>
 
 </view>

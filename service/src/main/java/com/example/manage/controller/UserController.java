@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @RequestMapping("/deleteStudentById")
-    public boolean deleteStudentById(String userid) {
+    public int deleteStudentById(String userid) {
         System.out.println("deleteStudentById:" + userid);
         return userService.deleteStudentById(userid);
     }
@@ -48,5 +48,11 @@ public class UserController {
     public int updateStudent(String userId, String userName, String college, String profession, String stuClass) {
         System.out.println("updateStudent:" + userId);
         return userService.updateStudent(userId, userName, college, profession, stuClass);
+    }
+
+    @RequestMapping("/searchStudent")
+    public List<User> searchStudent(String keywords) {
+        System.out.println("search:" + keywords);
+        return userService.search(keywords);
     }
 }

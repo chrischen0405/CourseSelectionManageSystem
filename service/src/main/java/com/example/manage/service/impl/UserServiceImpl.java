@@ -36,8 +36,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteStudentById(String userId) {
-        return userRepository.deleteByUid(userId);
+    public int deleteStudentById(String userId) {
+        userRepository.deleteByUid(userId);
+        if (userRepository.existsByUid(userId)) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     @Override
@@ -73,5 +78,10 @@ public class UserServiceImpl implements UserService {
         newUser.setWxid(oldUser.getWxid());
         userRepository.save(newUser);
         return 1;
+    }
+
+    @Override
+    public List<User> search(String keywords) {
+        return userRepository.findByTypeAndUidLikeOrTypeAndUnameLike(2, "%" + keywords + "%", 2, "%" + keywords + "%");
     }
 }

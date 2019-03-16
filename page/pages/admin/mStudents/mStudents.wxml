@@ -1,7 +1,7 @@
 <!--pages/admin/mStudents/mStudents.wxml-->
 <!-- 搜索框 -->
 <view class="searchBar">
-  <input placeholder="请输入学生编号" value="{{searchValue}}" bindinput="searchValueInput" />
+  <input placeholder="请输入学生学号或姓名" value="{{searchValue}}" bindinput="input_keywords" />
   <button bindtap="clickSearch">
     搜索
   </button>
@@ -10,8 +10,8 @@
 <block wx:for="{{stuList}}">
 	<view class="myCell" bindtap='clickCell' data-index='{{index}}'>
 		<view class="oneCell">
-			<view class="cellText"> 学号：{{item.stuId}} </view>
-      <view class="cellText"> 姓名：{{item.stuName}} </view>
+			<view class="cellText"> 学号：{{item.uid}} </view>
+      <view class="cellText"> 姓名：{{item.uname}} </view>
       <view class="cellText"> 分院：{{item.college}} </view>
       <view class="cellText"> 班级：{{item.profession}}{{item.stuClass}}班 </view>
 		</view>

@@ -20,23 +20,24 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public boolean deleteCourseById(int courseId) {
-        return courseRepository.deleteByCid(courseId);
+    public int deleteCourseById(int courseId) {
+        courseRepository.deleteByCid(courseId);
+        return 1;
     }
 
     @Override
     public int addCourse(String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit) {
-        Course course=new Course();
+        Course course = new Course();
         course.setCnum(courseNum);
         course.setCname(courseName);
         course.setCtime(courseTime);
         course.setClassroom(classroom);
         course.setTeacher(teacher);
         course.setCredit(credit);
-        boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum,courseName,teacher);
-        if (isExist){
+        boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum, courseName, teacher);
+        if (isExist) {
             return 0;
-        }else {
+        } else {
             courseRepository.save(course);
             return 1;
         }
@@ -44,7 +45,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public int updateCourse(int courseId, String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit) {
-        Course course=new Course();
+        Course course = new Course();
         course.setCid(courseId);
         course.setCnum(courseNum);
         course.setCname(courseName);
@@ -52,12 +53,17 @@ public class CourseServiceImpl implements CourseService {
         course.setClassroom(classroom);
         course.setTeacher(teacher);
         course.setCredit(credit);
-        boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum,courseName,teacher);
-        if (isExist){
+        boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum, courseName, teacher);
+        if (isExist) {
             return 0;
-        }else {
+        } else {
             courseRepository.save(course);
             return 1;
         }
+    }
+
+    @Override
+    public List<Course> search(String keywords) {
+        return courseRepository.findByCnumLikeOrCnameLike("%" + keywords + "%", "%" + keywords + "%");
     }
 }

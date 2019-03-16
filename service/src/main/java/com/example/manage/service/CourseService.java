@@ -7,9 +7,11 @@ import java.util.List;
 public interface CourseService {
     List<Course> getAllCourse();
 
-    boolean deleteCourseById(int courseId);
+    int deleteCourseById(int courseId);
 
     int addCourse(String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit);
 
     int updateCourse(int courseId, String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit);
+
+    List<Course> search(String keywords);
 }
