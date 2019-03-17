@@ -20,8 +20,9 @@ public class SelectCourseServiceImpl implements SelectCourseService {
     }
 
     @Override
-    public boolean deleteById(int sid) {
-        return selectCourseRepository.deleteBySid(sid);
+    public int deleteById(int sid) {
+        selectCourseRepository.deleteBySid(sid);
+        return 1;
     }
 
     @Override
@@ -36,5 +37,10 @@ public class SelectCourseServiceImpl implements SelectCourseService {
             selectCourseRepository.save(selectCourse);
             return 1;
         }
+    }
+
+    @Override
+    public List<Object[]> courseList(String uid) {
+        return selectCourseRepository.findByUid(uid);
     }
 }

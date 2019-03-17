@@ -7,7 +7,9 @@ import java.util.List;
 public interface SelectCourseService {
     List<SelectCourse> findAll();
 
-    boolean deleteById(int sid);
+    int deleteById(int sid);
 
     int selectCourse(String uid, int cid);
+
+    List<Object[]> courseList(String uid);
 }

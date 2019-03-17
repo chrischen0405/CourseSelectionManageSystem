@@ -1,4 +1,5 @@
 // pages/student/myCourse/myCourse.js
+const app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -12,46 +13,64 @@ Component({
    */
   data: {
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
-    courseList: [
-      { "id":0, "week": 1, "cstart": 3, "ctime": 3, "cname": "高等数学1", "classroom": "理四222", "teacher":"王老师" },
-      { "id":1, "week": 2, "cstart": 6, "ctime": 3, "cname": "高等数学2", "classroom": "理四224", "teacher":"赵老师" },
-      { "id":2, "week": 3, "cstart": 1, "ctime": 2, "cname": "高等数学3", "classroom": "理四226", "teacher":"钱老师" },
-      { "id":3, "week": 4, "cstart": 10, "ctime": 2, "cname": "高等数学4", "classroom": "理四223", "teacher":"孙老师" },
-      { "id":4, "week": 5, "cstart": 4, "ctime": 1, "cname": "高等数学5", "classroom": "理四225", "teacher":"李老师" },
-    ]
+    courseList: [{
+      "sid": 0,
+      "cnum": "",
+      "credit": 0.0,
+      "week": 0,
+      "cstart": 0,
+      "ctime": 0,
+      "cname": "",
+      "classroom": "",
+      "teacher": ""
+    }],
+    recordList: null,
+    tkId: 0,
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    showCardView:function(e){
-      let num=e.currentTarget.dataset.index;
+    showCardView: function(e) {
+      let num = e.currentTarget.dataset.index;
+      this.setData({
+        tkId: this.data.courseList[num].sid
+      })
       this.dialog = this.selectComponent("#dialog");
       this.tkdialog = this.selectComponent("#tkdialog");
-      const data=this.data;
-      const dialogContent=[{
-        label:'课程名称',
-        value:data.courseList[num].cname
-      },
-      {
-        label: '教室',
-        value: data.courseList[num].classroom
-      },
-      {
-        label: '老师',
-        value: data.courseList[num].teacher
-      }];
+      const data = this.data;
+      const dialogContent = [{
+          label: '课程编号',
+          value: data.courseList[num].cnum
+        },
+        {
+          label: '课程名称',
+          value: data.courseList[num].cname
+        },
+        {
+          label: '学分',
+          value: data.courseList[num].credit
+        },
+        {
+          label: '教室',
+          value: data.courseList[num].classroom
+        },
+        {
+          label: '老师',
+          value: data.courseList[num].teacher
+        }
+      ];
       this.setData({
         dialogContent: dialogContent
       })
       this.dialog.show();
-      
+
       console.log(num);
     },
     // 点击了弹出框的取消
     handleCancelDialog() {
-      this.dialog.hide()
+      this.dialog.hide();
     },
     // 点击了弹出框的确认
     handleConfirmDialog() {
@@ -63,6 +82,98 @@ Component({
     },
     handleConfirmDialog2() {
       this.tkdialog.hide();
+      this.delSelectCourse();
     },
+    getCourseList() {
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/courseList',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          'uid': app.globalData.nowUser.uid,
+        },
+        success(res) {
+          console.log(res.data);
+          that.setData({
+            recordList: res.data,
+          });
+          that.dealCourseList(res.data);
+        },
+        fail(e) {
+          console.log(e);
+        }
+      });
+    },
+    dealCourseList(data) {
+      let cList = [];
+      let rList = data;
+      for (let i = 0; i < rList.length; i++) {
+        let obj = {};
+        let timeObj = this.strToJson(rList[i][1]);
+        obj.sid = rList[i][0];
+        obj.week = timeObj.week;
+        obj.cstart = timeObj.cstart;
+        obj.ctime = timeObj.time;
+        obj.cname = rList[i][2];
+        obj.cnum = rList[i][3];
+        obj.classroom = rList[i][4];
+        obj.teacher = rList[i][5];
+        obj.credit = rList[i][6];
+        cList.push(obj);
+      }
+      console.log(cList);
+      this.setData({
+        courseList: cList
+      })
+    },
+    strToJson(str) {
+      return JSON.parse(str);
+    },
+    delSelectCourse() {
+      wx.showLoading({
+        title: '正在退课',
+      });
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/deleteRecord',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          'sid': that.data.tkId
+        },
+        success: function(res) {
+          var resData = res.data;
+          if (resData == 1) {
+            wx.hideLoading();
+            that.getCourseList();
+            wx.showToast({
+              title: '退课成功',
+              icon: 'none',
+              duration: 2000
+            });
+          } else {
+            wx.hideLoading();
+            wx.showToast({
+              title: '退课失败',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        },
+        fail: function() {
+          wx.hideLoading();
+          wx.showToast({
+            title: '退课失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      })
+    }
   }
 })

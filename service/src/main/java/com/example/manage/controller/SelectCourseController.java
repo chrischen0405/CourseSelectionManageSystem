@@ -20,7 +20,7 @@ public class SelectCourseController {
     }
 
     @RequestMapping("/deleteRecord")
-    public boolean deleteRecord(int sid) {
+    public int deleteRecord(int sid) {
         System.out.println("deleteRecord:" + sid);
         return selectCourseService.deleteById(sid);
     }
@@ -29,5 +29,11 @@ public class SelectCourseController {
     public int selectCourse(String uid, int cid) {
         System.out.println("selectCourse:" + uid + "+" + cid);
         return selectCourseService.selectCourse(uid, cid);
+    }
+
+    @RequestMapping("/courseList")
+    public List<Object[]> courseList(String uid) {
+        System.out.println("courseList:" + uid);
+        return selectCourseService.courseList(uid);
     }
 }
