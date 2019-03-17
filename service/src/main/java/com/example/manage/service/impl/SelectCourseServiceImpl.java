@@ -30,6 +30,11 @@ public class SelectCourseServiceImpl implements SelectCourseService {
         selectCourse.setUid(uid);
         selectCourse.setCid(cid);
         selectCourse.setSdate(new Date());
-        return 1;
+        if (selectCourseRepository.existsByUidAndCid(uid, cid)) {
+            return 0;
+        } else {
+            selectCourseRepository.save(selectCourse);
+            return 1;
+        }
     }
 }

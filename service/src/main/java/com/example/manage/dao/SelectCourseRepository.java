@@ -9,4 +9,6 @@ public interface SelectCourseRepository extends JpaRepository<SelectCourse, Inte
     List<SelectCourse> findAll();
 
     boolean deleteBySid(int sid);
+
+    boolean existsByUidAndCid(String uid, int cid);
 }
