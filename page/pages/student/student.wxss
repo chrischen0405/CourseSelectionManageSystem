@@ -1,5 +1,6 @@
 /* pages/student/student.wxss */
-.container{
+
+.container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -7,10 +8,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #fafafa
+  background: #fafafa;
 }
 
-.tab-wrapper{
+.tab-wrapper {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -18,7 +19,7 @@
   background: #fff;
 }
 
-.tab-left, .tab-right{
+.tab-first, .tab-second, .tab-third {
   flex: 1;
   font-size: 32rpx;
   color: #000;
@@ -26,11 +27,11 @@
   text-align: center;
 }
 
-.tab-active{
+.tab-active {
   border-bottom: 2px solid #09bb07;
 }
 
-.content-wrapper{
+.content-wrapper {
   width: 100%;
   flex: 1;
 }

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "allCourse":"allCourse/allCourse",
-    "myCourse":"myCourse/myCourse"
+    "myCourse":"myCourse/myCourse",
+    "stuCenter": "stuCenter/stuCenter"
   }
 }

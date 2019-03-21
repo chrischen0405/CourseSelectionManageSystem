@@ -10,16 +10,21 @@ Page({
   switchTab: function(e) {
     console.log(e)
     let tab = e.currentTarget.id
-    if (tab === 'tableft') {
+    if (tab === 'tabfirst') {
       this.setData({
         currentTab: 0
       });
       this.selectComponent("#allCourse").getAllCourse();
-    } else if (tab === 'tabright') {
+    } else if (tab === 'tabsecond') {
       this.setData({
         currentTab: 1
       });
       this.selectComponent("#myCourse").getCourseList();
+    } else if (tab === 'tabthird') {
+      this.setData({
+        currentTab: 2
+      });
+      this.selectComponent("#stuCenter").getstuInfo();
     }
   },
 

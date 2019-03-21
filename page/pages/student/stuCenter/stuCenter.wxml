@@ -1,0 +1,37 @@
+<!--pages/student/stuCenter/stuCenter.wxml-->
+<view class='content'>
+  <view class='nav'>
+    <view class='top'>
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+  </view>
+  <view class='item'>
+    <text class='left'>学号：</text>
+    <text class='right'>{{stuInfo.uid}}</text>
+  </view>
+  <view class='item'>
+    <text class='left'>姓名：</text>
+    <text class='right'>{{stuInfo.uname}}</text>
+  </view>
+  <view class='item'>
+    <text class='left'> 班级：</text>
+    <text class='right'>{{stuInfo.stuClass}}</text>
+  </view>
+  <view class='item'>
+    <text class='left'>专业：</text>
+    <text class='right'>{{stuInfo.profession}}</text>
+  </view>
+  <view class='item'>
+    <text class='left'> 分院：</text>
+    <text class='right'>{{stuInfo.college}}</text>
+  </view>
+  <view class='item' bindtap='resetpwd'>
+    <text class='left'> 密码：</text>
+    <text class='right'>重置</text>
+  </view>
+  <view class='item' bindtap='exit'>
+    <text class='left'>退出：</text>
+    <text class='right'>>>></text>
+  </view>
+
+</view>
