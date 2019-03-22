@@ -1,6 +1,6 @@
 <!--pages/admin/addCourse/addCourse.wxml-->
 <view class='container'>
-<view class='info'>
+  <view class='info'>
     <label class='info-text'>课程编号：</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入课程编号' bindinput='input_num'></input>
@@ -10,12 +10,6 @@
     <label class='info-text'>课程名称：</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入课程名称' bindinput='input_name'></input>
-    </view>
-  </view>
-  <view class='info'>
-    <label class='info-text'>教室：</label>
-    <view class='info-box'>
-      <input class='info-input' placeholder='请输入教室' bindinput='input_classroom'></input>
     </view>
   </view>
   <view class='info'>
@@ -31,28 +25,108 @@
     </view>
   </view>
   <view class='info'>
-    <label class='info-text picker-text'>星期：</label>
-    <picker bindchange='bindPickerChangeWeek' range='{{weekList}}'>
+    <label class='info-text picker-text'>时段数：</label>
+    <picker bindchange='bindPickerChangeClassTime' range='{{classTimeList}}' value='{{index0}}'>
       <view class='picker'>
-        {{weekList[index1]}}
+        {{classTimeList[index0]}}
       </view>
     </picker>
   </view>
-  <view class='info'>
-    <label class='info-text picker-text'>上课时间：</label>
-    <picker bindchange='bindPickerChangeStart' range='{{startList}}'>
-      <view class='picker'>
-        {{startList[index2]}}
+  <view wx:if='{{isShow1}}'>
+    <view class='info'>
+      <label class='info-text'>教室：</label>
+      <view class='info-box'>
+        <input class='info-input' placeholder='请输入教室' bindinput='input_classroom1'></input>
       </view>
-    </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>星期：</label>
+      <picker bindchange='bindPickerChangeWeek1' range='{{weekList}}'>
+        <view class='picker'>
+          {{weekList[index11]}}
+        </view>
+      </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>上课时间：</label>
+      <picker bindchange='bindPickerChangeStart1' range='{{startList}}'>
+        <view class='picker'>
+          {{startList[index12]}}
+        </view>
+      </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>课时数：</label>
+      <picker bindchange='bindPickerChangeTime1' range='{{timeList}}'>
+        <view class='picker'>
+          {{timeList[index13]}}
+        </view>
+      </picker>
+    </view>
   </view>
-  <view class='info'>
-    <label class='info-text picker-text'>课时数：</label>
-    <picker bindchange='bindPickerChangeTime' range='{{timeList}}'>
-      <view class='picker'>
-        {{timeList[index3]}}
+  <view wx:if='{{isShow2}}'>
+    <view class='info'>
+      <label class='info-text'>教室：</label>
+      <view class='info-box'>
+        <input class='info-input' placeholder='请输入教室' bindinput='input_classroom2'></input>
       </view>
-    </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>星期：</label>
+      <picker bindchange='bindPickerChangeWeek2' range='{{weekList}}'>
+        <view class='picker'>
+          {{weekList[index21]}}
+        </view>
+      </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>上课时间：</label>
+      <picker bindchange='bindPickerChangeStart2' range='{{startList}}'>
+        <view class='picker'>
+          {{startList[index22]}}
+        </view>
+      </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>课时数：</label>
+      <picker bindchange='bindPickerChangeTime2' range='{{timeList}}'>
+        <view class='picker'>
+          {{timeList[index23]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view wx:if='{{isShow3}}'>
+    <view class='info'>
+      <label class='info-text'>教室：</label>
+      <view class='info-box'>
+        <input class='info-input' placeholder='请输入教室' bindinput='input_classroom3'></input>
+      </view>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>星期：</label>
+      <picker bindchange='bindPickerChangeWeek3' range='{{weekList}}'>
+        <view class='picker'>
+          {{weekList[index31]}}
+        </view>
+      </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>上课时间：</label>
+      <picker bindchange='bindPickerChangeStart3' range='{{startList}}'>
+        <view class='picker'>
+          {{startList[index32]}}
+        </view>
+      </picker>
+    </view>
+    <view class='info'>
+      <label class='info-text picker-text'>课时数：</label>
+      <picker bindchange='bindPickerChangeTime3' range='{{timeList}}'>
+        <view class='picker'>
+          {{timeList[index33]}}
+        </view>
+      </picker>
+    </view>
   </view>
   <button class='submit' bindtap='submit'>提交</button>
 </view>

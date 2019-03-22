@@ -111,18 +111,20 @@ Component({
       let cList = [];
       let rList = data;
       for (let i = 0; i < rList.length; i++) {
-        let obj = {};
         let timeObj = this.strToJson(rList[i][1]);
-        obj.sid = rList[i][0];
-        obj.week = timeObj.week;
-        obj.cstart = timeObj.cstart;
-        obj.ctime = timeObj.time;
-        obj.cname = rList[i][2];
-        obj.cnum = rList[i][3];
-        obj.classroom = rList[i][4];
-        obj.teacher = rList[i][5];
-        obj.credit = rList[i][6];
-        cList.push(obj);
+        for (let j = 0; j < timeObj.length; j++) {
+          let obj = {};
+          obj.sid = rList[i][0];
+          obj.week = timeObj[j].week;
+          obj.cstart = timeObj[j].cstart;
+          obj.ctime = timeObj[j].time;
+          obj.classroom = timeObj[j].classroom;
+          obj.cname = rList[i][2];
+          obj.cnum = rList[i][3];
+          obj.teacher = rList[i][5];
+          obj.credit = rList[i][6];
+          cList.push(obj);
+        }
       }
       console.log(cList);
       this.setData({
