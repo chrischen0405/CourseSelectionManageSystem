@@ -14,6 +14,20 @@ Component({
   data: {
     collegeList: ['计算机与计算科学学院', '信息与电气工程学院', '工程学院', '医学院', '外国语学院', '商学院', '传媒与人文学院', '法学院', '创意与艺术设计学院', '新西兰UW学院'],
     professionList: ['计算机与计算科学', '软件工程', '信息管理', '统计'],
+    allPList: [
+      ['计算机与计算科学', '软件工程', '信息管理', '统计'],
+      ['信电1', '信电2'],
+      ['工程1', '工程2'],
+      ['医学1', '医学2'],
+      ['外语1', '外语2'],
+      ['商院1', '商院2'],
+      ['传媒1', '传媒2'],
+      ['法学1', '法学2'],
+      ['创意1', '创意2'],
+      ['UW1', 'UW2']
+    ],
+    index1: 0,
+    index2: 0,
     userId: '',
     userName: '',
     college: '',
@@ -44,7 +58,8 @@ Component({
       console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
         index1: e.detail.value,
-        college: this.data.collegeList[e.detail.value]
+        college: this.data.collegeList[e.detail.value],
+        professionList: this.data.allPList[e.detail.value]
       })
     },
     bindPickerChange2(e) {

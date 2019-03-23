@@ -63,7 +63,17 @@ Component({
     // 点击了弹出框的确认
     handleConfirmDialog() {
       this.dialog.hide();
-      this.deleteCourse();
+      let that = this;
+      wx.showModal({
+        title: '确定删除该课程？',
+        confirmColor: '#DC143C',
+        confirmText: '删除',
+        success(res) {
+          if (res.confirm) {
+            that.deleteCourse();
+          } else if (res.cancel) {}
+        }
+      })
     },
     getAllCourse() {
       let that = this;

@@ -14,6 +14,7 @@ Component({
   data: {
     stuList: [],
     deleteId: '',
+    keywords: '',
   },
 
   /**
@@ -60,7 +61,17 @@ Component({
     // 点击了弹出框的确认
     handleConfirmDialog() {
       this.dialog.hide();
-      this.deleteStudent();
+      let that = this;
+      wx.showModal({
+        title: '确定删除该学生？',
+        confirmColor: '#DC143C',
+        confirmText: '删除',
+        success(res) {
+          if (res.confirm) {
+            that.deleteStudent();
+          } else if (res.cancel) {}
+        }
+      })
     },
     getAllStudent() {
       let that = this;
@@ -135,12 +146,12 @@ Component({
           data: {
             'keywords': that.data.keywords
           },
-          success: function (res) {
+          success: function(res) {
             that.setData({
               stuList: res.data,
             });
           },
-          fail: function () {
+          fail: function() {
             wx.showToast({
               title: '查询失败',
               icon: 'none',
