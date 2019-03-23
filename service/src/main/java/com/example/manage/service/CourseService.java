@@ -9,9 +9,9 @@ public interface CourseService {
 
     int deleteCourseById(int courseId);
 
-    int addCourse(String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit);
+    int addCourse(String courseNum, String courseName, String courseTime, int capacity, String teacher, float credit);
 
-    int updateCourse(int courseId, String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit);
+    int updateCourse(int courseId, String courseNum, String courseName, String courseTime, int capacity, String teacher, float credit);
 
     List<Course> search(String keywords);
 }

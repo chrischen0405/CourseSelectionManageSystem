@@ -21,7 +21,7 @@ public class Course implements Serializable {
     @Column(nullable = false, unique = false)
     private String ctime;
     @Column(nullable = false, unique = false)
-    private String classroom;
+    private int capacity;
     @Column(nullable = false, unique = false)
     private String teacher;
     @Column(nullable = false, unique = false)
@@ -51,14 +51,6 @@ public class Course implements Serializable {
         this.ctime = ctime;
     }
 
-    public String getClassroom() {
-        return classroom;
-    }
-
-    public void setClassroom(String classroom) {
-        this.classroom = classroom;
-    }
-
     public String getTeacher() {
         return teacher;
     }
@@ -81,5 +73,13 @@ public class Course implements Serializable {
 
     public void setCid(int cid) {
         this.cid = cid;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

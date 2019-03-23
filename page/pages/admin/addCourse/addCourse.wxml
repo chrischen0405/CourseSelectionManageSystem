@@ -13,6 +13,12 @@
     </view>
   </view>
   <view class='info'>
+    <label class='info-text'>课程容量：</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入课程容量' bindinput='input_capacity'></input>
+    </view>
+  </view>
+  <view class='info'>
     <label class='info-text'>教师：</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入教师名称' bindinput='input_teacher'></input>

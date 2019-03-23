@@ -26,12 +26,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public int addCourse(String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit) {
+    public int addCourse(String courseNum, String courseName, String courseTime, int capacity, String teacher, float credit) {
         Course course = new Course();
         course.setCnum(courseNum);
         course.setCname(courseName);
         course.setCtime(courseTime);
-        course.setClassroom(classroom);
+        course.setCapacity(capacity);
         course.setTeacher(teacher);
         course.setCredit(credit);
         boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum, courseName, teacher);
@@ -44,13 +44,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public int updateCourse(int courseId, String courseNum, String courseName, String courseTime, String classroom, String teacher, float credit) {
+    public int updateCourse(int courseId, String courseNum, String courseName, String courseTime, int capacity, String teacher, float credit) {
         Course course = new Course();
         course.setCid(courseId);
         course.setCnum(courseNum);
         course.setCname(courseName);
         course.setCtime(courseTime);
-        course.setClassroom(classroom);
+        course.setCapacity(capacity);
         course.setTeacher(teacher);
         course.setCredit(credit);
         boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum, courseName, teacher);

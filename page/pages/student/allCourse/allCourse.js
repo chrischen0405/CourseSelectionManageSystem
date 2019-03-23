@@ -1,5 +1,6 @@
 // pages/student/allCourse/allCourse.js
 const app = getApp();
+let utils = require('../../../utils/util.js');
 Component({
   /**
    * 组件的属性列表
@@ -38,24 +39,16 @@ Component({
           value: data.courseList[num].cname
         },
         {
-          label: '教室',
-          value: data.courseList[num].classroom
-        },
-        {
-          label: '课程名称',
-          value: data.courseList[num].cname
-        },
-        {
-          label: '上课时间',
-          value: '星期' + data.courseList[num].week + ' 第' + data.courseList[num].cstart + '节课'
-        },
-        {
-          label: '课时',
-          value: data.courseList[num].ctime + '课时'
+          label: '课程容量',
+          value: data.courseList[num].capacity
         },
         {
           label: '教师',
           value: data.courseList[num].teacher
+        },
+        {
+          label: '上课时间',
+          value: this.getStrClassTime(utils.strToJSON(data.courseList[num].ctime))
         }
       ];
       this.setData({
@@ -159,6 +152,14 @@ Component({
           });
         }
       })
+    },
+    getStrClassTime(arr) {//解析上课时间数组
+      let str = '';
+      for (let i = 0; i < arr.length; i++) {
+        let obj = arr[i];
+        str = str + '时段' + (i + 1) + '：' + obj.classroom + ' 星期' + obj.week + ' 第' + obj.cstart + '节课 ' + obj.time + '课时 ';
+      }
+      return str;
     }
   }
 })

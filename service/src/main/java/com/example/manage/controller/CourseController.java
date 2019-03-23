@@ -26,15 +26,15 @@ public class CourseController {
     }
 
     @RequestMapping("/addCourse")
-    public int addCourse(String cnum, String cname, String ctime, String classroom, String teacher, float credit) {
+    public int addCourse(String cnum, String cname, String ctime, int capacity, String teacher, float credit) {
         System.out.println("addCourse");
-        return courseService.addCourse(cnum, cname, ctime, classroom, teacher, credit);
+        return courseService.addCourse(cnum, cname, ctime, capacity, teacher, credit);
     }
 
     @RequestMapping("/updateCourse")
-    public int updateCourse(int cid, String cnum, String cname, String ctime, String classroom, String teacher, float credit) {
+    public int updateCourse(int cid, String cnum, String cname, String ctime, int capacity, String teacher, float credit) {
         System.out.println("updateCourse:" + cid);
-        return courseService.updateCourse(cid, cnum, cname, ctime, classroom, teacher, credit);
+        return courseService.updateCourse(cid, cnum, cname, ctime, capacity, teacher, credit);
     }
 
     @RequestMapping("/searchCourse")

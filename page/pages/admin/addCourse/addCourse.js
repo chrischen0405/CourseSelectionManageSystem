@@ -24,6 +24,7 @@ Component({
     cnum: '',
     cname: '',
     ctime: '',
+    capacity: 0,
     classroom1: '',
     classroom2: '',
     classroom3: '',
@@ -46,6 +47,12 @@ Component({
     input_name(e) {
       this.setData({
         cname: e.detail.value
+      })
+    },
+    input_capacity(e) {
+      let capacity = parseInt(e.detail.value);
+      this.setData({
+        capacity: capacity
       })
     },
     input_teacher(e) {
@@ -244,6 +251,20 @@ Component({
         });
         return;
       }
+      if (isNaN(this.data.capacity)) {
+        wx.showToast({
+          title: '课程容量必须为数字',
+          icon: 'none'
+        });
+        return;
+      }
+      if (this.data.capacity < 1) {
+        wx.showToast({
+          title: '课程容量不合法',
+          icon: 'none'
+        });
+        return;
+      }
       if (this.data.teacher === '') {
         wx.showToast({
           title: '教师不能为空',
@@ -294,7 +315,7 @@ Component({
           'cnum': that.data.cnum,
           'cname': that.data.cname,
           'ctime': that.setCourseTime(),
-          'classroom': that.data.classroom,
+          'capacity': that.data.capacity,
           'teacher': that.data.teacher,
           'credit': that.data.credit
         },

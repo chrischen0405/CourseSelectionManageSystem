@@ -12,7 +12,6 @@
 		<view class="oneCell">
 			<view class="cellText"> 课程编号：{{item.cnum}} </view>
       <view class="cellText"> 课程名称：{{item.cname}} </view>
-      <view class="cellText"> 教室：{{item.classroom}} </view>
       <view class="cellText"> 教师：{{item.teacher}} </view>
 		</view>
 	</view>

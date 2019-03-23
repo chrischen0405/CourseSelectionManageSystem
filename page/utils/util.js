@@ -14,6 +14,11 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const strToJSON = str => {//字符串转json对象
+  return JSON.parse(str);
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  strToJSON: strToJSON
 }

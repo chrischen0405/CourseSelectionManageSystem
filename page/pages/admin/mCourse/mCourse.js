@@ -1,5 +1,6 @@
 // pages/admin/mCourse/mCourse.js
 const app = getApp();
+let utils = require('../../../utils/util.js');
 Component({
   /**
    * 组件的属性列表
@@ -13,8 +14,8 @@ Component({
    */
   data: {
     courseList: [],
-    deleteId:0,
-    keywords:'',
+    deleteId: 0,
+    keywords: '',
   },
 
   /**
@@ -38,20 +39,16 @@ Component({
           value: data.courseList[num].cname
         },
         {
-          label: '教室',
-          value: data.courseList[num].classroom
-        },
-        {
-          label: '上课时间',
-          value: '星期' + data.courseList[num].week + ' 第' + data.courseList[num].cstart + '节课'
-        },
-        {
-          label: '课时',
-          value: data.courseList[num].ctime + '课时'
+          label: '课程容量',
+          value: data.courseList[num].capacity
         },
         {
           label: '教师',
           value: data.courseList[num].teacher
+        },
+        {
+          label: '上课时间',
+          value: this.getStrClassTime(utils.strToJSON(data.courseList[num].ctime))
         }
       ];
       this.setData({
@@ -71,7 +68,7 @@ Component({
     getAllCourse() {
       let that = this;
       wx.request({
-        url: app.globalData.url+'/getAllCourse',
+        url: app.globalData.url + '/getAllCourse',
         success(res) {
           that.setData({
             courseList: res.data,
@@ -93,7 +90,7 @@ Component({
         data: {
           'cid': that.data.deleteId
         },
-        success: function (res) {
+        success: function(res) {
           var resData = res.data;
           if (resData) {
             wx.hideLoading();
@@ -112,7 +109,7 @@ Component({
             });
           }
         },
-        fail: function () {
+        fail: function() {
           wx.hideLoading();
           wx.showToast({
             title: '删除失败',
@@ -122,16 +119,16 @@ Component({
         }
       })
     },
-    input_keywords(e){
+    input_keywords(e) {
       this.setData({
         keywords: e.detail.value
       })
     },
-    clickSearch(){
+    clickSearch() {
       let that = this;
-      if(this.data.keywords===''){
+      if (this.data.keywords === '') {
         this.getAllCourse();
-      }else{
+      } else {
         wx.request({
           url: app.globalData.url + '/searchCourse',
           method: 'POST',
@@ -141,12 +138,12 @@ Component({
           data: {
             'keywords': that.data.keywords
           },
-          success: function (res) {
+          success: function(res) {
             that.setData({
               courseList: res.data,
             });
           },
-          fail: function () {
+          fail: function() {
             wx.showToast({
               title: '查询失败',
               icon: 'none',
@@ -155,6 +152,14 @@ Component({
           }
         })
       }
+    },
+    getStrClassTime(arr) { //解析上课时间数组
+      let str = '';
+      for (let i = 0; i < arr.length; i++) {
+        let obj = arr[i];
+        str = str + '时段' + (i + 1) + '：' + obj.classroom + ' 星期' + obj.week + ' 第' + obj.cstart + '节课 ' + obj.time + '课时 ';
+      }
+      return str;
     }
   }
 })
