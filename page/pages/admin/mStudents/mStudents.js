@@ -100,7 +100,7 @@ Component({
         },
         success: function(res) {
           var resData = res.data;
-          if (resData) {
+          if (resData === 1) {
             wx.hideLoading();
             that.getAllStudent();
             wx.showToast({

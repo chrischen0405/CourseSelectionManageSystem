@@ -12,7 +12,9 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
     @Transactional
     int deleteByCid(int cid);
 
+    boolean existsByCid(int Cid);
+
     boolean existsByCnumAndCnameAndTeacher(String cnum, String cname, String teacher);
 
-    List<Course> findByCnumLikeOrCnameLike(String cnum,String cname);
+    List<Course> findByCnumLikeOrCnameLike(String cnum, String cname);
 }

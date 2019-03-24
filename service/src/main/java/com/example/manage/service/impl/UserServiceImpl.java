@@ -1,5 +1,6 @@
 package com.example.manage.service.impl;
 
+import com.example.manage.dao.SelectCourseRepository;
 import com.example.manage.dao.UserRepository;
 import com.example.manage.model.User;
 import com.example.manage.service.UserService;
@@ -12,6 +13,9 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private SelectCourseRepository selectCourseRepository;
 
     @Override
     public int loginType(String userid, String password) {
@@ -37,11 +41,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int deleteStudentById(String userId) {
-        userRepository.deleteByUid(userId);
-        if (userRepository.existsByUid(userId)) {
+        selectCourseRepository.deleteByUid(userId);
+        if (selectCourseRepository.existsByUid(userId)) {
             return 0;
         } else {
-            return 1;
+            userRepository.deleteByUid(userId);
+            if (userRepository.existsByUid(userId)) {
+                return 0;
+            } else {
+                return 1;
+            }
         }
     }
 

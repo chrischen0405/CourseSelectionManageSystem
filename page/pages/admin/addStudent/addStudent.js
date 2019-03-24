@@ -30,8 +30,8 @@ Component({
     index2: 0,
     userId: '',
     userName: '',
-    college: '',
-    profession: '',
+    college: '计算机与计算科学学院',
+    profession: '计算机与计算科学',
     stuClass: ''
   },
 
@@ -58,8 +58,10 @@ Component({
       console.log('picker发送选择改变，携带值为', e.detail.value)
       this.setData({
         index1: e.detail.value,
+        index2: 0,
         college: this.data.collegeList[e.detail.value],
-        professionList: this.data.allPList[e.detail.value]
+        professionList: this.data.allPList[e.detail.value],
+        profession: this.data.allPList[e.detail.value][0],
       })
     },
     bindPickerChange2(e) {
@@ -80,20 +82,6 @@ Component({
       if (this.data.userName === '') {
         wx.showToast({
           title: '姓名不能为空',
-          icon: 'none'
-        });
-        return;
-      }
-      if (this.data.college === '') {
-        wx.showToast({
-          title: '请选择分院',
-          icon: 'none'
-        });
-        return;
-      }
-      if (this.data.profession === '') {
-        wx.showToast({
-          title: '请选择专业',
           icon: 'none'
         });
         return;

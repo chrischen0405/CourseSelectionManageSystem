@@ -2,6 +2,7 @@ package com.example.manage.dao;
 
 import com.example.manage.model.SelectCourse;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -20,4 +21,16 @@ public interface SelectCourseRepository extends JpaRepository<SelectCourse, Inte
             + " where s.cid = c.cid and"
             + " s.uid = :uid", nativeQuery = true)
     List<Object[]> findByUid(@Param("uid") String uid);
+
+    @Modifying
+    @Transactional
+    int deleteByUid(String uid);
+
+    boolean existsByUid(String uid);
+
+    @Modifying
+    @Transactional
+    int deleteByCid(int cid);
+
+    boolean existsByCid(int cid);
 }

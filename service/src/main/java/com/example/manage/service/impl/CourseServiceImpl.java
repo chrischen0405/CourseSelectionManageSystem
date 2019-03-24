@@ -1,6 +1,7 @@
 package com.example.manage.service.impl;
 
 import com.example.manage.dao.CourseRepository;
+import com.example.manage.dao.SelectCourseRepository;
 import com.example.manage.model.Course;
 import com.example.manage.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ public class CourseServiceImpl implements CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
+    @Autowired
+    private SelectCourseRepository selectCourseRepository;
 
     @Override
     public List<Course> getAllCourse() {
@@ -21,8 +24,16 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public int deleteCourseById(int courseId) {
-        courseRepository.deleteByCid(courseId);
-        return 1;
+        selectCourseRepository.deleteByCid(courseId);
+        if (selectCourseRepository.existsByCid(courseId)) {
+            return 0;
+        } else {
+            courseRepository.deleteByCid(courseId);
+            if (courseRepository.existsByCid(courseId)) {
+                return 0;
+            }
+            return 1;
+        }
     }
 
     @Override

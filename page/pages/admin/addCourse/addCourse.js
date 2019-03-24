@@ -18,8 +18,14 @@ Component({
     classTimeList: [1, 2, 3],
     index0: 0,
     index11: 0,
-    index12: 0,
+    index12: '0',
     index13: 0,
+    index21: 0,
+    index22: '0',
+    index23: 0,
+    index31: 0,
+    index32: '0',
+    index33: 0,
     classTime: 1,
     isShow1: true,
     isShow2: false,
@@ -278,27 +284,6 @@ Component({
       if (this.data.credit === '') {
         wx.showToast({
           title: '学分不能为空',
-          icon: 'none'
-        });
-        return;
-      }
-      if (this.data.week === '') {
-        wx.showToast({
-          title: '请选择星期',
-          icon: 'none'
-        });
-        return;
-      }
-      if (this.data.cstart === '') {
-        wx.showToast({
-          title: '请选择上课时间',
-          icon: 'none'
-        });
-        return;
-      }
-      if (this.data.time === '') {
-        wx.showToast({
-          title: '请选择课时数',
           icon: 'none'
         });
         return;
