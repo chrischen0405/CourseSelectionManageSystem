@@ -16,6 +16,10 @@ Component({
       type: String,
       value: '确定'
     },
+    confirmText2: {
+      type: String,
+      value: '确定2'
+    },
     cancelText: {
       type: String,
       value: '取消'
@@ -33,12 +37,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    show(){
+    show() {
       this.setData({
         showDialog: true
       })
     },
-    hide(){
+    hide() {
       this.setData({
         showDialog: false
       })
@@ -50,6 +54,9 @@ Component({
     _confirm() {
       //触发成功回调
       this.triggerEvent("confirm");
+    },
+    _confirm2() {
+      this.triggerEvent("confirm2");
     }
   }
 })

@@ -1,7 +1,9 @@
 /* component/dialog/dialog.wxss */
+
 .my-dialog {
   opacity: 1;
 }
+
 .my-dialog .my-mask {
   position: fixed;
   top: 0;
@@ -11,6 +13,7 @@
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
+
 .my-dialog .my-container {
   position: fixed;
   width: 80%;
@@ -25,6 +28,7 @@
   overflow: hidden;
   z-index: 5000;
 }
+
 .my-dialog .my-container .title {
   display: inline-block;
   width: 100%;
@@ -36,6 +40,7 @@
   font-size: 18px;
   color: #303133;
 }
+
 .my-dialog .my-container .content {
   margin: 10rpx 0 20rpx;
   display: inline-block;
@@ -43,6 +48,7 @@
   line-height: 50rpx;
   text-align: left;
 }
+
 .my-dialog .my-container .content .row {
   margin: 0 10%;
   width: 80%;
@@ -50,6 +56,7 @@
   color: #606266;
   word-break: break-all;
 }
+
 .my-dialog .my-container .btn-row {
   padding: 10rpx 0 0;
   display: inline-block;
@@ -59,16 +66,25 @@
   font-size: 18px;
   border-top: 1rpx solid #c0c4cc;
 }
+
 .my-dialog .my-container .btn-row .confirm {
   float: right;
-  width: 50%;
+  width: 33%;
+  height: 100%;
+  color: #ff3366;
+}
+
+.my-dialog .my-container .btn-row .confirm2 {
+  float: right;
+  width: 33%;
   height: 100%;
   color: #86c2ec;
 }
+
 .my-dialog .my-container .btn-row .cancel {
   color: #606266;
   float: right;
-  width: calc(50% - 2rpx);
+  width: calc(33% - 2rpx);
   height: 100%;
   border-right: 1rpx solid #c0c4cc;
 }

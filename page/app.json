@@ -5,7 +5,8 @@
     "pages/login/login",
     "pages/admin/admin",
     "pages/student/student",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/updateStudent/updateStudent"
   ],
   "window": {
     "backgroundTextStyle": "light",

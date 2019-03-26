@@ -1,0 +1,39 @@
+<!--pages/updateStudent/updateStudent.wxml-->
+<view class='wrap'>修改学生</view>
+<view class='container'>
+  <view class='info'>
+    <label class='info-text'>学号：</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入学生学号' disabled='disabled' value='{{stuId}}'></input>
+    </view>
+  </view>
+  <view class='info'>
+    <label class='info-text'>姓名：</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入学生姓名' value='{{userName}}' bindinput='input_name'></input>
+    </view>
+  </view>
+  <view class='info'>
+    <label class='info-text picker-text'>分院：</label>
+    <picker bindchange='bindPickerChange' range='{{collegeList}}'>
+      <view class='picker'>
+        {{collegeList[index1]}}
+      </view>
+    </picker>
+  </view>
+  <view class='info'>
+    <label class='info-text picker-text'>专业：</label>
+    <picker bindchange='bindPickerChange2' range='{{professionList}}'>
+      <view class='picker'>
+        {{professionList[index2]}}
+      </view>
+    </picker>
+  </view>
+  <view class='info'>
+    <label class='info-text'>班级：</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入学生班级' value='{{stuClass}}' bindinput='input_class'></input>
+    </view>
+  </view>
+  <button class='submit' bindtap='submit'>提交</button>
+</view>

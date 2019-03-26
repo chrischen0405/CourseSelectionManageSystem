@@ -8,6 +8,7 @@
     </view>
     <view class="btn-row">
       <view class="cancel" bindtap='_cancel'>{{cancelText}}</view>
+      <view class="confirm2" bindtap="_confirm2">{{confirmText2}}</view>
       <view class="confirm" bindtap="_confirm">{{confirmText}}</view>
     </view>
   </view>

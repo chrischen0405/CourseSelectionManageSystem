@@ -73,6 +73,12 @@ Component({
         }
       })
     },
+    handleConfirmDialog2() {
+      this.dialog.hide();
+      wx.navigateTo({
+        url: '../updateStudent/updateStudent?userId=' + this.data.deleteId,
+      })
+    },
     getAllStudent() {
       let that = this;
       wx.request({
