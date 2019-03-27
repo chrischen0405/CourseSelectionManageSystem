@@ -19,6 +19,12 @@ public class CourseController {
         return courseService.getAllCourse();
     }
 
+    @RequestMapping("/getOneCourse")
+    public Course getOneCourse(int cid) {
+        System.out.println("getOneCourse:" + cid);
+        return courseService.getOneCourse(cid);
+    }
+
     @RequestMapping("/deleteCourseById")
     public int deleteCourseById(int cid) {
         System.out.println("deleteCourseById:" + cid);

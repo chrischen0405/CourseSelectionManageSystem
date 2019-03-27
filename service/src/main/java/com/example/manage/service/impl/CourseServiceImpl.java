@@ -23,6 +23,11 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public Course getOneCourse(int cid) {
+        return courseRepository.findByCid(cid);
+    }
+
+    @Override
     public int deleteCourseById(int courseId) {
         selectCourseRepository.deleteByCid(courseId);
         if (selectCourseRepository.existsByCid(courseId)) {

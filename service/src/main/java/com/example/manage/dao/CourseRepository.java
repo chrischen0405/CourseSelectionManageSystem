@@ -9,6 +9,8 @@ import java.util.List;
 public interface CourseRepository extends JpaRepository<Course, Integer> {
     List<Course> findAll();
 
+    Course findByCid(int cid);
+
     @Transactional
     int deleteByCid(int cid);
 

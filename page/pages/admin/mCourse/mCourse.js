@@ -75,6 +75,12 @@ Component({
         }
       })
     },
+    handleConfirmDialog2() {
+      this.dialog.hide();
+      wx.navigateTo({
+        url: '../updateCourse/updateCourse?courseId=' + this.data.deleteId,
+      })
+    },
     getAllCourse() {
       let that = this;
       wx.request({

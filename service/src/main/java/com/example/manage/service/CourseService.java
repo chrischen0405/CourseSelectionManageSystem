@@ -7,6 +7,8 @@ import java.util.List;
 public interface CourseService {
     List<Course> getAllCourse();
 
+    Course getOneCourse(int cid);
+
     int deleteCourseById(int courseId);
 
     int addCourse(String courseNum, String courseName, String courseTime, int capacity, String teacher, float credit);
