@@ -116,6 +116,69 @@ Page({
   },
   submit() {
     console.log(this.data);
+    if (this.data.userName === '') {
+      wx.showToast({
+        title: '姓名不能为空',
+        icon: 'none'
+      });
+      return;
+    }
+    if (this.data.stuClass === '') {
+      wx.showToast({
+        title: '班级不能为空',
+        icon: 'none'
+      });
+      return;
+    }
+    wx.showLoading({
+      title: '正在修改',
+    })
+    console.log("正在修改" + this.data.userId);
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/updateStudent',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'userId': that.data.stuId,
+        'userName': that.data.userName,
+        'college': that.data.college,
+        'profession': that.data.profession,
+        'stuClass': that.data.stuClass
+      },
+      success: function(res) {
+        console.log("addStudent:", res.data);
+        var resData = res.data;
+        if (resData === 1) {
+          wx.hideLoading();
+          wx.showToast({
+            title: '修改成功',
+            icon: 'none',
+            duration: 2000
+          });
+          wx.reLaunch({
+            url: '../admin/admin'
+          })
+        } else {
+          wx.hideLoading();
+          wx.showToast({
+            title: '修改失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      },
+      fail: function() {
+        wx.hideLoading();
+        wx.showToast({
+          title: '修改失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    })
   },
 
   /**

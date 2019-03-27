@@ -75,17 +75,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int updateStudent(String userId, String userName, String college, String profession, String stuClass) {
+        System.out.println(userId);
         User oldUser = userRepository.findByUid(userId);
-        User newUser = new User();
-        newUser.setUid(userId);
-        newUser.setUname(userName);
-        newUser.setPwd(oldUser.getPwd());
-        newUser.setType(2);
-        newUser.setCollege(college);
-        newUser.setProfession(profession);
-        newUser.setStuClass(stuClass);
-        newUser.setWxid(oldUser.getWxid());
-        userRepository.save(newUser);
+        System.out.println(oldUser);
+        System.out.println(oldUser.getPwd());
+//        User newUser = new User();
+//        newUser.setUid(userId);
+//        newUser.setUname(userName);
+//        newUser.setPwd(oldUser.getPwd());
+//        newUser.setType(2);
+//        newUser.setCollege(college);
+//        newUser.setProfession(profession);
+//        newUser.setStuClass(stuClass);
+//        newUser.setWxid(oldUser.getWxid());
+//        userRepository.save(newUser);
+        userRepository.updateUser(userId, userName, oldUser.getPwd(), college, profession, stuClass);
         return 1;
     }
 

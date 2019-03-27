@@ -18,17 +18,17 @@ public class User implements Serializable {
     private String uid;
     @Column(nullable = false, unique = false)
     private String uname;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false, unique = false)
     private String pwd;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false, unique = false)
     private int type;
-    @Column(nullable = true,unique = false)
+    @Column(nullable = true, unique = false)
     private String college;
-    @Column(nullable = true,unique = false)
+    @Column(nullable = true, unique = false)
     private String profession;
-    @Column(nullable = true,unique = false)
+    @Column(nullable = true, unique = false)
     private String stuClass;
-    @Column(nullable = true,unique = true)
+    @Column(nullable = true, unique = true)
     private String wxid;
 
     public String getUid() {
@@ -93,5 +93,13 @@ public class User implements Serializable {
 
     public void setWxid(String wxid) {
         this.wxid = wxid;
+    }
+
+    public Long getNo() {
+        return No;
+    }
+
+    public void setNo(Long no) {
+        No = no;
     }
 }
