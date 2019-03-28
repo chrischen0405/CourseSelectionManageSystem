@@ -43,7 +43,7 @@
     <view class='info'>
       <label class='info-text'>教室：</label>
       <view class='info-box'>
-        <input class='info-input' placeholder='请输入教室' bindinput='input_classroom1'></input>
+        <input class='info-input' placeholder='请输入教室' value='{{classroom1}}' bindinput='input_classroom1'></input>
       </view>
     </view>
     <view class='info'>
@@ -75,7 +75,7 @@
     <view class='info'>
       <label class='info-text'>教室：</label>
       <view class='info-box'>
-        <input class='info-input' placeholder='请输入教室' bindinput='input_classroom2'></input>
+        <input class='info-input' placeholder='请输入教室' value='{{classroom2}}' bindinput='input_classroom2'></input>
       </view>
     </view>
     <view class='info'>
@@ -107,7 +107,7 @@
     <view class='info'>
       <label class='info-text'>教室：</label>
       <view class='info-box'>
-        <input class='info-input' placeholder='请输入教室' bindinput='input_classroom3'></input>
+        <input class='info-input' placeholder='请输入教室' value='{{classroom3}}' bindinput='input_classroom3'></input>
       </view>
     </view>
     <view class='info'>

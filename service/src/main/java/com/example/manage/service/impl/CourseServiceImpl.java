@@ -61,21 +61,13 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public int updateCourse(int courseId, String courseNum, String courseName, String courseTime, int capacity, String teacher, float credit) {
-        Course course = new Course();
-        course.setCid(courseId);
-        course.setCnum(courseNum);
-        course.setCname(courseName);
-        course.setCtime(courseTime);
-        course.setCapacity(capacity);
-        course.setTeacher(teacher);
-        course.setCredit(credit);
-        boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum, courseName, teacher);
-        if (isExist) {
-            return 0;
-        } else {
-            courseRepository.save(course);
-            return 1;
-        }
+//        boolean isExist = courseRepository.existsByCnumAndCnameAndTeacher(courseNum, courseName, teacher);
+//        if (isExist) {
+//            return 0;
+//        } else {
+        courseRepository.updateCourse(courseId, courseNum, courseName, courseTime, capacity, teacher, credit);
+        return 1;
+//        }
     }
 
     @Override

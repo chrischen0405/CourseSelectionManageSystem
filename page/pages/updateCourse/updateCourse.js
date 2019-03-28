@@ -1,5 +1,6 @@
 // pages/updateCourse/updateCourse.js
 const app = getApp();
+let utils = require('../../utils/util.js');
 Page({
 
   /**
@@ -69,7 +70,8 @@ Page({
           capacity: resData.capacity,
           teacher: resData.teacher,
           credit: resData.credit
-        })
+        });
+        that.dealCTime(utils.strToJSON(resData.ctime));
       },
       fail: function() {
         wx.hideLoading();
@@ -80,6 +82,74 @@ Page({
         });
       }
     })
+  },
+  dealCTime(arr) {
+    switch (arr.length) {
+      case 1:
+        this.setData({
+          index0: 0,
+          isShow1: true,
+          isShow2: false,
+          isShow3: false,
+          classroom1: arr[0].classroom
+        });
+        break;
+      case 2:
+        this.setData({
+          index0: 1,
+          isShow1: true,
+          isShow2: true,
+          isShow3: false,
+          classroom1: arr[0].classroom,
+          classroom2: arr[1].classroom
+        });
+        break;
+      case 3:
+        this.setData({
+          index0: 2,
+          isShow1: true,
+          isShow2: true,
+          isShow3: true,
+          classroom1: arr[0].classroom,
+          classroom2: arr[1].classroom,
+          classroom3: arr[2].classroom
+        });
+        break;
+    }
+    for (let i = 0; i < arr.length; i++) {
+      if (i === 0) {
+        this.setData({
+          index11: arr[i].week - 1,
+          index12: this.cstartToNum(arr[i].cstart),
+          index13: arr[i].time - 2,
+        })
+      } else if (i === 1) {
+        this.setData({
+          index21: arr[i].week - 1,
+          index22: this.cstartToNum(arr[i].cstart),
+          index23: arr[i].time - 2,
+        })
+      } else if (i === 2) {
+        this.setData({
+          index31: arr[i].week - 1,
+          index32: this.cstartToNum(arr[i].cstart),
+          index33: arr[i].time - 2,
+        })
+      }
+    }
+  },
+  cstartToNum(cstart) {
+    if (cstart == 1) {
+      return '0';
+    } else if (cstart == 3) {
+      return '1';
+    } else if (cstart == 6) {
+      return '2';
+    } else if (cstart == 8) {
+      return '3';
+    } else if (cstart == 10) {
+      return '4';
+    }
   },
   input_num(e) {
     this.setData({
@@ -321,15 +391,56 @@ Page({
       });
       return;
     }
-    // wx.showLoading({
-    //   title: '正在更新',
-    // })
-    console.log("正在更新" + this.data.cnum);
-    let that = this;
-    this.setData({
-      ctime: that.setCourseTime(),
+    wx.showLoading({
+      title: '正在更新',
     });
-    console.log(that.data);
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/updateCourse',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'cid': parseInt(that.data.cid),
+        'cnum': that.data.cnum,
+        'cname': that.data.cname,
+        'ctime': that.setCourseTime(),
+        'capacity': that.data.capacity,
+        'teacher': that.data.teacher,
+        'credit': that.data.credit
+      },
+      success: function(res) {
+        console.log("updateCourse:", res.data);
+        var resData = res.data;
+        if (resData === 1) {
+          wx.hideLoading();
+          wx.showToast({
+            title: '更新成功',
+            icon: 'none',
+            duration: 2000
+          });
+          wx.navigateTo({
+            url: '../admin/admin'
+          })
+        } else if (resData === 0) {
+          wx.hideLoading();
+          wx.showToast({
+            title: '课程已存在',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      },
+      fail: function() {
+        wx.hideLoading();
+        wx.showToast({
+          title: '更新失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    })
   },
 
   /**
