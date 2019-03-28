@@ -420,7 +420,7 @@ Page({
             icon: 'none',
             duration: 2000
           });
-          wx.navigateTo({
+          wx.reLaunch({
             url: '../admin/admin'
           })
         } else if (resData === 0) {

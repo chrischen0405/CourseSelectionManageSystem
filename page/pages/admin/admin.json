@@ -3,6 +3,7 @@
     "mCourse": "mCourse/mCourse",
     "mStudents": "mStudents/mStudents",
     "addCourse": "addCourse/addCourse",
-    "addStudent": "addStudent/addStudent"
+    "addStudent": "addStudent/addStudent",
+    "mCenter": "mCenter/mCenter"
   }
 }

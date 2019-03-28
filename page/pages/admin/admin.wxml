@@ -6,6 +6,7 @@
     <view id='secondTab' class='tab-second {{currentTab === 1 ? "tab-active" : ""}}' bindtap='switchTab'>用户管理</view>
     <view id='thirdTab' class='tab-third {{currentTab === 2 ? "tab-active" : ""}}' bindtap='switchTab'>添加课程</view>
     <view id='forthTab' class='tab-forth {{currentTab === 3 ? "tab-active" : ""}}' bindtap='switchTab'>添加学生</view>
+    <view id='fifthTab' class='tab-fifth {{currentTab === 4 ? "tab-active" : ""}}' bindtap='switchTab'>管理员</view>
   </view>
 
   <view class='content-wrapper' wx:if='{{currentTab === 0}}'>
@@ -19,6 +20,9 @@
   </view>
   <view class='content-wrapper' wx:if='{{currentTab === 3}}'>
     <addStudent/>
+  </view>
+  <view class='content-wrapper' wx:if='{{currentTab === 4}}'>
+    <mCenter id='mCenter' />
   </view>
 
 </view>

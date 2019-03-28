@@ -28,6 +28,11 @@ Page({
       this.setData({
         currentTab: 3
       })
+    } else if (tab === 'fifthTab') {
+      this.setData({
+        currentTab: 4
+      });
+      this.selectComponent("#mCenter").getUserInfo();
     }
   },
 
