@@ -19,7 +19,7 @@
   background: #fff;
 }
 
-.tab-first, .tab-second, .tab-third, .tab-forth, .tab-fifth {
+.tab-first, .tab-second, .tab-fifth {
   flex: 1;
   font-size: 32rpx;
   color: #000;
@@ -34,4 +34,13 @@
 .content-wrapper {
   width: 100%;
   flex: 1;
+}
+
+.addIcon {
+  z-index: 9999;
+  position: fixed;
+  width: 84rpx;
+  height: 84rpx;
+  right: 30rpx;
+  bottom: 10%;
 }

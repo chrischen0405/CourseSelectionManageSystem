@@ -20,20 +20,22 @@ Page({
         currentTab: 1
       });
       this.selectComponent("#mStudent").getAllStudent();
-    } else if (tab === 'thirdTab') {
-      this.setData({
-        currentTab: 2
-      })
-    } else if (tab === 'forthTab') {
-      this.setData({
-        currentTab: 3
-      })
-    } else if (tab === 'fifthTab') {
+    }else if (tab === 'fifthTab') {
       this.setData({
         currentTab: 4
       });
       this.selectComponent("#mCenter").getUserInfo();
     }
+  },
+  addCourse() {
+    this.setData({
+      currentTab: 2
+    })
+  },
+  addStudent() {
+    this.setData({
+      currentTab: 3
+    })
   },
 
   /**
