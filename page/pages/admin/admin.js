@@ -25,6 +25,11 @@ Page({
         currentTab: 4
       });
       this.selectComponent("#mCenter").getUserInfo();
+    } else if (tab === 'sixthTab') {
+      this.setData({
+        currentTab: 5
+      });
+      this.selectComponent("#record").getAllRecord();
     }
   },
   addCourse() {

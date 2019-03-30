@@ -19,7 +19,7 @@
   background: #fff;
 }
 
-.tab-first, .tab-second, .tab-fifth {
+.tab-first, .tab-second, .tab-fifth, .tab-sixth {
   flex: 1;
   font-size: 32rpx;
   color: #000;
