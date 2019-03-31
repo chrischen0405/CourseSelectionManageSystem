@@ -12,6 +12,8 @@ import java.util.List;
 public interface SelectCourseRepository extends JpaRepository<SelectCourse, Integer> {
     List<SelectCourse> findAll();
 
+    SelectCourse findBySid(int sid);
+
     @Transactional
     int deleteBySid(int sid);
 

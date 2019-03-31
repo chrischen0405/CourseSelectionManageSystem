@@ -146,6 +146,7 @@ Component({
           'content-type': 'application/x-www-form-urlencoded'
         },
         data: {
+          'uid': app.globalData.nowUser.uid,
           'sid': that.data.tkId
         },
         success: function(res) {

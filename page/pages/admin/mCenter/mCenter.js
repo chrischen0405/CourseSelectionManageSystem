@@ -21,7 +21,7 @@ Component({
   methods: {
     getUserInfo() {
       this.setData({
-        stuInfo: app.globalData.nowUser,
+        userInfo: app.globalData.nowUser,
       });
       console.log(this.userInfo);
     },

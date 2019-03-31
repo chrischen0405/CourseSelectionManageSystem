@@ -20,9 +20,9 @@ public class SelectCourseController {
     }
 
     @RequestMapping("/deleteRecord")
-    public int deleteRecord(int sid) {
+    public int deleteRecord(String uid, int sid) {
         System.out.println("deleteRecord:" + sid);
-        return selectCourseService.deleteById(sid);
+        return selectCourseService.deleteById(uid, sid);
     }
 
     @RequestMapping("/selectCourse")

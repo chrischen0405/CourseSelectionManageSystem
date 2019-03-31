@@ -11,11 +11,11 @@ public interface UserService {
 
     User getOneUser(String userId);
 
-    int deleteStudentById(String userId);
+    int deleteStudentById(String admin, String userId);
 
-    int addStudent(String userId, String userName, String college, String profession, String stuClass);
+    int addStudent(String admin, String userId, String userName, String college, String profession, String stuClass);
 
-    int updateStudent(String userId, String userName, String college, String profession, String stuClass);
+    int updateStudent(String admin, String userId, String userName, String college, String profession, String stuClass);
 
     List<User> search(String keywords);
 }

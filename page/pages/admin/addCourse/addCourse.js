@@ -300,6 +300,7 @@ Component({
           'content-type': 'application/x-www-form-urlencoded'
         },
         data: {
+          'admin': app.globalData.nowUser.uid,
           'cnum': that.data.cnum,
           'cname': that.data.cname,
           'ctime': that.setCourseTime(),

@@ -33,21 +33,21 @@ public class UserController {
     }
 
     @RequestMapping("/deleteStudentById")
-    public int deleteStudentById(String userid) {
+    public int deleteStudentById(String admin, String userid) {
         System.out.println("deleteStudentById:" + userid);
-        return userService.deleteStudentById(userid);
+        return userService.deleteStudentById(admin, userid);
     }
 
     @RequestMapping("/addStudent")
-    public int addStudent(String userId, String userName, String college, String profession, String stuClass) {
+    public int addStudent(String admin, String userId, String userName, String college, String profession, String stuClass) {
         System.out.println("addStudent:" + userId);
-        return userService.addStudent(userId, userName, college, profession, stuClass);
+        return userService.addStudent(admin, userId, userName, college, profession, stuClass);
     }
 
     @RequestMapping("/updateStudent")
-    public int updateStudent(String userId, String userName, String college, String profession, String stuClass) {
+    public int updateStudent(String admin, String userId, String userName, String college, String profession, String stuClass) {
         System.out.println("updateStudent:" + userId);
-        return userService.updateStudent(userId, userName, college, profession, stuClass);
+        return userService.updateStudent(admin, userId, userName, college, profession, stuClass);
     }
 
     @RequestMapping("/searchStudent")

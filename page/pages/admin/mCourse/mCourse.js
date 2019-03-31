@@ -104,6 +104,7 @@ Component({
           'content-type': 'application/x-www-form-urlencoded'
         },
         data: {
+          'admin': app.globalData.nowUser.uid,
           'cid': that.data.deleteId
         },
         success: function(res) {

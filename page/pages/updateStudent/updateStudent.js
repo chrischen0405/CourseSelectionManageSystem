@@ -142,6 +142,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
+        'admin': app.globalData.nowUser.uid,
         'userId': that.data.stuId,
         'userName': that.data.userName,
         'college': that.data.college,
