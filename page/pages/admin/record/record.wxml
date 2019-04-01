@@ -1,2 +1,12 @@
 <!--pages/admin/record/record.wxml-->
-<text>pages/admin/record/record.wxml</text>
+<view wx:for="{{recordList}}">
+  <view wx:if="{{item.operate=== '增加学生'||item.operate=== '删除学生'||item.operate=== '更新学生'}}" class='myCell'>
+    {{item.date}}管理员{{item.uid}}{{item.operate}}学号{{item.oid}} 用户{{item.oname}}
+  </view>
+  <view wx:elif="{{item.operate=== '增加课程'||item.operate=== '删除课程'||item.operate=== '更新课程'}}" class='myCell'>
+    {{item.date}}管理员{{item.uid}}{{item.operate}}课程号{{item.oid}} 课程{{item.oname}}
+  </view>
+  <view wx:else class='myCell'>
+    {{item.date}}学生{{item.uid}}{{item.operate}}课程号{{item.oid}} 课程{{item.oname}}
+  </view>
+</view>

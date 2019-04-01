@@ -26,7 +26,7 @@ Component({
         success(res) {
           console.log(res.data);
           that.setData({
-            courseList: res.data,
+            recordList: res.data,
           });
         }
       })

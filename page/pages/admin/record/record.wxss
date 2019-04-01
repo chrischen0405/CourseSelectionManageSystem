@@ -1,1 +1,8 @@
 /* pages/admin/record/record.wxss */
+
+.myCell {
+  padding-top: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  font-size: 28rpx;
+}
