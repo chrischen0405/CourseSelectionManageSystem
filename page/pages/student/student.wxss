@@ -12,6 +12,8 @@
 }
 
 .tab-wrapper {
+  position: fixed;
+  z-index: 998;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -20,6 +22,7 @@
 }
 
 .tab-first, .tab-second, .tab-third {
+  z-index: 999;
   flex: 1;
   font-size: 32rpx;
   color: #000;
@@ -32,6 +35,7 @@
 }
 
 .content-wrapper {
+  margin-top: 100rpx;
   width: 100%;
   flex: 1;
 }

@@ -1,37 +1,37 @@
 <!--pages/admin/addCourse/addCourse.wxml-->
 <view class='container'>
   <view class='info'>
-    <label class='info-text'>课程编号：</label>
+    <label class='info-text'>课程编号</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入课程编号' bindinput='input_num'></input>
     </view>
   </view>
   <view class='info'>
-    <label class='info-text'>课程名称：</label>
+    <label class='info-text'>课程名称</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入课程名称' bindinput='input_name'></input>
     </view>
   </view>
   <view class='info'>
-    <label class='info-text'>课程容量：</label>
+    <label class='info-text'>课程容量</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入课程容量' bindinput='input_capacity'></input>
     </view>
   </view>
   <view class='info'>
-    <label class='info-text'>教师：</label>
+    <label class='info-text'>教师</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入教师名称' bindinput='input_teacher'></input>
     </view>
   </view>
   <view class='info'>
-    <label class='info-text'>学分：</label>
+    <label class='info-text'>学分</label>
     <view class='info-box'>
       <input class='info-input' placeholder='请输入该课程学分数' bindinput='input_credit'></input>
     </view>
   </view>
   <view class='info'>
-    <label class='info-text picker-text'>时段数：</label>
+    <label class='info-text picker-text'>时段数</label>
     <picker bindchange='bindPickerChangeClassTime' range='{{classTimeList}}' value='{{index0}}'>
       <view class='picker'>
         {{classTimeList[index0]}}
@@ -40,13 +40,13 @@
   </view>
   <view wx:if='{{isShow1}}'>
     <view class='info'>
-      <label class='info-text'>教室：</label>
+      <label class='info-text'>教室</label>
       <view class='info-box'>
         <input class='info-input' placeholder='请输入教室' bindinput='input_classroom1'></input>
       </view>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>星期：</label>
+      <label class='info-text picker-text'>星期</label>
       <picker bindchange='bindPickerChangeWeek1' range='{{weekList}}'>
         <view class='picker'>
           {{weekList[index11]}}
@@ -54,7 +54,7 @@
       </picker>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>上课时间：</label>
+      <label class='info-text picker-text'>上课时间</label>
       <picker bindchange='bindPickerChangeStart1' range='{{startList}}'>
         <view class='picker'>
           {{startList[index12]}}
@@ -62,7 +62,7 @@
       </picker>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>课时数：</label>
+      <label class='info-text picker-text'>课时数</label>
       <picker bindchange='bindPickerChangeTime1' range='{{timeList}}'>
         <view class='picker'>
           {{timeList[index13]}}
@@ -72,13 +72,13 @@
   </view>
   <view wx:if='{{isShow2}}'>
     <view class='info'>
-      <label class='info-text'>教室：</label>
+      <label class='info-text'>教室</label>
       <view class='info-box'>
         <input class='info-input' placeholder='请输入教室' bindinput='input_classroom2'></input>
       </view>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>星期：</label>
+      <label class='info-text picker-text'>星期</label>
       <picker bindchange='bindPickerChangeWeek2' range='{{weekList}}'>
         <view class='picker'>
           {{weekList[index21]}}
@@ -86,7 +86,7 @@
       </picker>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>上课时间：</label>
+      <label class='info-text picker-text'>上课时间</label>
       <picker bindchange='bindPickerChangeStart2' range='{{startList}}'>
         <view class='picker'>
           {{startList[index22]}}
@@ -94,7 +94,7 @@
       </picker>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>课时数：</label>
+      <label class='info-text picker-text'>课时数</label>
       <picker bindchange='bindPickerChangeTime2' range='{{timeList}}'>
         <view class='picker'>
           {{timeList[index23]}}
@@ -104,13 +104,13 @@
   </view>
   <view wx:if='{{isShow3}}'>
     <view class='info'>
-      <label class='info-text'>教室：</label>
+      <label class='info-text'>教室</label>
       <view class='info-box'>
         <input class='info-input' placeholder='请输入教室' bindinput='input_classroom3'></input>
       </view>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>星期：</label>
+      <label class='info-text picker-text'>星期</label>
       <picker bindchange='bindPickerChangeWeek3' range='{{weekList}}'>
         <view class='picker'>
           {{weekList[index31]}}
@@ -118,7 +118,7 @@
       </picker>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>上课时间：</label>
+      <label class='info-text picker-text'>上课时间</label>
       <picker bindchange='bindPickerChangeStart3' range='{{startList}}'>
         <view class='picker'>
           {{startList[index32]}}
@@ -126,7 +126,7 @@
       </picker>
     </view>
     <view class='info'>
-      <label class='info-text picker-text'>课时数：</label>
+      <label class='info-text picker-text'>课时数</label>
       <picker bindchange='bindPickerChangeTime3' range='{{timeList}}'>
         <view class='picker'>
           {{timeList[index33]}}

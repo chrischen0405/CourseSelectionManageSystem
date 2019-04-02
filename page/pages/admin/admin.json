@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "管理员系统",
   "usingComponents": {
     "mCourse": "mCourse/mCourse",
     "mStudents": "mStudents/mStudents",

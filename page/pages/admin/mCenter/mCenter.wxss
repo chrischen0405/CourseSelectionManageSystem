@@ -1,28 +1,35 @@
 /* pages/admin/mCenter/mCenter.wxss */
-.nav{
-    background-color: #fff;
+
+.nav {
+  background-color: #fff;
 }
-.top{
+
+.top {
   width: 250rpx;
   height: 250rpx;
   margin: 0 auto;
 }
-.item{
+
+.item {
+  padding-top: 20rpx;
   height: 70rpx;
   background-color: #fff;
-  margin: 20rpx;
   display: flex;
-  border-radius: 20rpx;
+  font-size: 32rpx;
+  border-bottom: 1px solid #dadada;
 }
-.left{
+
+.left {
   display: flex;
   justify-content: flex-start;
   flex-grow: 1;
+  margin-left: 30rpx;
 }
-.right{
+
+.right {
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
   color: #ccc;
-  margin-right: 20rpx;
+  margin-right: 30rpx;
 }

@@ -7,16 +7,18 @@
   </button>
 </view>
 <!-- 学生列表 -->
-<block wx:for="{{stuList}}">
-  <view class="myCell" bindtap='clickCell' data-index='{{index}}'>
-    <view class="oneCell">
-      <view class="cellText"> 学号：{{item.uid}} </view>
-      <view class="cellText"> 姓名：{{item.uname}} </view>
-      <view class="cellText"> 分院：{{item.college}} </view>
-      <view class="cellText"> 班级：{{item.profession}}{{item.stuClass}}班 </view>
+<view class='list'>
+  <view wx:for="{{stuList}}">
+    <view class="myCell" bindtap='clickCell' data-index='{{index}}'>
+      <view class="oneCell">
+        <view class="cellText"> 学号：{{item.uid}} </view>
+        <view class="cellText"> 姓名：{{item.uname}} </view>
+        <view class="cellText"> 分院：{{item.college}} </view>
+        <view class="cellText"> 班级：{{item.profession}}{{item.stuClass}}班 </view>
+      </view>
     </view>
   </view>
-</block>
+</view>
 <!-- 学生详情 -->
 <dialog id="dialog" title="学生详情" confirmText="删除" confirmText2="修改" cancelText="取消" content="{{dialogContent}}" bind:cancel="handleCancelDialog" bind:confirm="handleConfirmDialog" bind:confirm2="handleConfirmDialog2">
 </dialog>

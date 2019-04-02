@@ -7,12 +7,14 @@
   </button>
 </view>
 <!-- 课程列表 -->
-<view wx:for="{{courseList}}">
-  <view class="myCell" bindtap='clickCell' data-index='{{index}}'>
-    <view class="oneCell">
-      <view class="cellText"> 课程编号：{{item.cnum}} </view>
-      <view class="cellText"> 课程名称：{{item.cname}} </view>
-      <view class="cellText"> 教师：{{item.teacher}} </view>
+<view class='list'>
+  <view wx:for="{{courseList}}">
+    <view class="myCell" bindtap='clickCell' data-index='{{index}}'>
+      <view class="oneCell">
+        <view class="cellText"> 课程编号：{{item.cnum}} </view>
+        <view class="cellText"> 课程名称：{{item.cname}} </view>
+        <view class="cellText"> 教师：{{item.teacher}} </view>
+      </view>
     </view>
   </view>
 </view>

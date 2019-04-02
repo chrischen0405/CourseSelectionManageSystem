@@ -1,5 +1,4 @@
 <!--pages/updateCourse/updateCourse.wxml-->
-<view class='wrap'>修改课程</view>
 <view class='container'>
   <view class='info'>
     <label class='info-text'>课程编号：</label>

@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "学生选课系统",
   "usingComponents": {
     "allCourse":"allCourse/allCourse",
     "myCourse":"myCourse/myCourse",

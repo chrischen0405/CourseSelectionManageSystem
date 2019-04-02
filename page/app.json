@@ -1,18 +1,15 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/login/login",
     "pages/admin/admin",
     "pages/student/student",
-    "pages/test/test",
     "pages/updateStudent/updateStudent",
     "pages/updateCourse/updateCourse"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "选课管理系统",
     "navigationBarTextStyle": "black"
   }
 }

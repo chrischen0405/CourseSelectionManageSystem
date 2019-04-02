@@ -1,5 +1,4 @@
 <!--pages/updateStudent/updateStudent.wxml-->
-<view class='wrap'>修改学生</view>
 <view class='container'>
   <view class='info'>
     <label class='info-text'>学号：</label>
