@@ -10,9 +10,9 @@ public class KindController {
     @Autowired
     private KindService kindService;
 
-    @RequestMapping("/getType")
-    public String getType(int pid, int cid) {
-        System.out.println("getType");
-        return kindService.getType(pid, cid);
+    @RequestMapping("/addType")
+    public int addType(String pname, String cnum, String type) {
+        System.out.println("addType " + cnum);
+        return kindService.addType(pname, cnum, type);
     }
 }

@@ -20,6 +20,8 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     boolean existsByCid(int Cid);
 
+    boolean existsByCnum(String Cnum);
+
     boolean existsByCnumAndCnameAndTeacher(String cnum, String cname, String teacher);
 
     List<Course> findByCnumLikeOrCnameLike(String cnum, String cname);

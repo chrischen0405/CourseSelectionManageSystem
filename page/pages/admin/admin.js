@@ -20,7 +20,7 @@ Page({
         currentTab: 1
       });
       this.selectComponent("#mStudent").getAllStudent();
-    }else if (tab === 'fifthTab') {
+    } else if (tab === 'fifthTab') {
       this.setData({
         currentTab: 4
       });
@@ -30,6 +30,10 @@ Page({
         currentTab: 5
       });
       this.selectComponent("#record").getAllRecord();
+    } else if (tab === 'seventhTab') {
+      this.setData({
+        currentTab: 6
+      });
     }
   },
   addCourse() {

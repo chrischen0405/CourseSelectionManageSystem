@@ -4,6 +4,7 @@
   <view class='tab-wrapper'>
     <view id='firstTab' class='tab-first {{currentTab === 0 ? "tab-active":""}}' bindtap='switchTab'>课程管理</view>
     <view id='secondTab' class='tab-second {{currentTab === 1 ? "tab-active" : ""}}' bindtap='switchTab'>用户管理</view>
+    <view id='seventhTab' class='tab-fifth {{currentTab === 6 ? "tab-active" : ""}}' bindtap='switchTab'>课程类型</view>
     <view id='sixthTab' class='tab-sixth {{currentTab === 5 ? "tab-active" : ""}}' bindtap='switchTab'>操作记录</view>
     <view id='fifthTab' class='tab-fifth {{currentTab === 4 ? "tab-active" : ""}}' bindtap='switchTab'>管理员中心</view>
   </view>
@@ -32,6 +33,9 @@
   </view>
   <view class='content-wrapper' wx:if='{{currentTab === 5}}'>
     <record id='record' />
+  </view>
+  <view class='content-wrapper' wx:if='{{currentTab === 6}}'>
+    <mKind/>
   </view>
 
 </view>

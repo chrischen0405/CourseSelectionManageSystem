@@ -1,0 +1,75 @@
+/* pages/admin/mKind/mKind.wxss */
+
+page {
+  background: #f4f4f4;
+  min-height: 100%;
+}
+
+.container {
+  background: #f4f4f4;
+  min-height: 100%;
+  padding-top: 30rpx;
+}
+
+.info {
+  width: 100%;
+}
+
+.info-text {
+  height: 33rpx;
+  width: 100%;
+  padding-top: 14rpx;
+  padding-bottom: 11rpx;
+  color: #7f7f7f;
+  font-size: 24rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  line-height: 33rpx;
+}
+
+.info-box {
+  height: 104rpx;
+  width: 100%;
+  color: #333;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 24rpx;
+  background: #fff;
+  position: relative;
+}
+
+.info-input {
+  position: absolute;
+  top: 27rpx;
+  left: 30rpx;
+  height: 50rpx;
+  width: 100%;
+  color: #333;
+  line-height: 50rpx;
+  font-size: 24rpx;
+}
+
+/* 下拉框 */
+
+.picker {
+  height: 104rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+/* 按钮 */
+
+.submit {
+  margin-top: 50rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  background: #fff;
+  color: #333;
+}

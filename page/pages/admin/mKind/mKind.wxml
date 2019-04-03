@@ -1,0 +1,34 @@
+<!--pages/admin/mKind/mKind.wxml-->
+<view class='container'>
+<view class='info'>
+    <label class='info-text'>课程号</label>
+    <view class='info-box'>
+      <input class='info-input' placeholder='请输入课程号' bindinput='input_cnum'></input>
+    </view>
+  </view>
+  <view class='info'>
+    <label class='info-text picker-text'>分院</label>
+    <picker bindchange='bindPickerChange' range='{{collegeList}}'>
+      <view class='picker'>
+        {{collegeList[index1]}}
+      </view>
+    </picker>
+  </view>
+  <view class='info'>
+    <label class='info-text picker-text'>专业</label>
+    <picker bindchange='bindPickerChange2' range='{{professionList}}'>
+      <view class='picker'>
+        {{professionList[index2]}}
+      </view>
+    </picker>
+  </view>
+  <view class='info'>
+    <label class='info-text picker-text'>课程类型</label>
+    <picker bindchange='bindPickerChange3' range='{{kindList}}'>
+      <view class='picker'>
+        {{kindList[index3]}}
+      </view>
+    </picker>
+  </view>
+  <button class='submit' bindtap='submit'>提交</button>
+</view>

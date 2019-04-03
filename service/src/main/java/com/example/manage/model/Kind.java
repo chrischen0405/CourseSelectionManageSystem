@@ -14,31 +14,23 @@ public class Kind implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int kid;
-    @Column(nullable = false,unique = false)
-    private int pid;
-    @Column(nullable = false,unique = false)
-    private int cid;
-    @Column(nullable = false,unique = false)
+    @Column(nullable = false, unique = false)
+    private String pname;
+    @Column(nullable = false, unique = false)
+    private String cnum;
+    @Column(nullable = false, unique = false)
     private String type;
 
     public int getKid() {
         return kid;
     }
 
-    public int getPid() {
-        return pid;
+    public String getPname() {
+        return pname;
     }
 
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
-
-    public int getCid() {
-        return cid;
-    }
-
-    public void setCid(int cid) {
-        this.cid = cid;
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
     public String getType() {
@@ -47,5 +39,13 @@ public class Kind implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getCnum() {
+        return cnum;
+    }
+
+    public void setCnum(String cnum) {
+        this.cnum = cnum;
     }
 }

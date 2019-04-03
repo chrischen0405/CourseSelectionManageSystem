@@ -1,5 +1,6 @@
 package com.example.manage.service.impl;
 
+import com.example.manage.dao.CourseRepository;
 import com.example.manage.dao.KindRepository;
 import com.example.manage.model.Kind;
 import com.example.manage.service.KindService;
@@ -11,9 +12,22 @@ public class KindServiceImpl implements KindService {
     @Autowired
     private KindRepository kindRepository;
 
+    @Autowired
+    private CourseRepository courseRepository;
+
     @Override
-    public String getType(int pid, int cid) {
-        Kind kind = kindRepository.findByPidAndCid(pid, cid);
-        return kind.getType();
+    public int addType(String pname, String cnum, String type) {
+        if (!courseRepository.existsByCnum(cnum)) {
+            return 0;
+        }
+        if (kindRepository.existsByCnumAndPname(cnum, pname)) {
+            return 2;
+        }
+        Kind kind = new Kind();
+        kind.setPname(pname);
+        kind.setCnum(cnum);
+        kind.setType(type);
+        kindRepository.save(kind);
+        return 1;
     }
 }
