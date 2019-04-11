@@ -30,4 +30,13 @@ public class KindServiceImpl implements KindService {
         kindRepository.save(kind);
         return 1;
     }
+
+    @Override
+    public String getCourseType(String cnum, String pname) {
+        if (!kindRepository.existsByCnumAndPname(cnum, pname)){
+            return "公选课";
+        }
+        Kind kind=kindRepository.findByCnumAndPname(cnum, pname);
+        return kind.getType();
+    }
 }

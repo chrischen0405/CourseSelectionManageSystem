@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface KindRepository extends JpaRepository<Kind, Integer> {
     boolean existsByCnumAndPname(String Cnum, String Pname);
+
+    Kind findByCnumAndPname(String Cnum, String Pname);
 }

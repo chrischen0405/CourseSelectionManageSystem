@@ -18,4 +18,10 @@ public interface UserService {
     int updateStudent(String admin, String userId, String userName, String college, String profession, String stuClass);
 
     List<User> search(String keywords);
+
+    boolean getFlag();
+
+    boolean setFlag();
+
+    int resetPwd(String uid,String pwd);
 }

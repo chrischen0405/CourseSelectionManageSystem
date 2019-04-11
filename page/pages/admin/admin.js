@@ -25,11 +25,7 @@ Page({
         currentTab: 4
       });
       this.selectComponent("#mCenter").getUserInfo();
-    } else if (tab === 'sixthTab') {
-      this.setData({
-        currentTab: 5
-      });
-      this.selectComponent("#record").getAllRecord();
+      this.selectComponent("#mCenter").getFlag();
     } else if (tab === 'seventhTab') {
       this.setData({
         currentTab: 6

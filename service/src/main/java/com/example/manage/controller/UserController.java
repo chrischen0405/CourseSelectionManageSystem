@@ -15,44 +15,51 @@ public class UserController {
 
     @RequestMapping("/login")
     public int login(String userid, String password) {
-        System.out.println("login用户名:" + userid + "密码:" + password);
-        int loginType = userService.loginType(userid, password);
-        return loginType;
+        return userService.loginType(userid, password);
     }
 
     @RequestMapping("/getAllStudent")
     public List<User> getAllStudent() {
-        System.out.println("getAllStudent成功");
         return userService.getAllStudent();
     }
 
     @RequestMapping("/getOneUser")
     public User getOneUser(String userId) {
-        System.out.println("getOneUser:" + userId);
         return userService.getOneUser(userId);
     }
 
     @RequestMapping("/deleteStudentById")
     public int deleteStudentById(String admin, String userid) {
-        System.out.println("deleteStudentById:" + userid);
         return userService.deleteStudentById(admin, userid);
     }
 
     @RequestMapping("/addStudent")
     public int addStudent(String admin, String userId, String userName, String college, String profession, String stuClass) {
-        System.out.println("addStudent:" + userId);
         return userService.addStudent(admin, userId, userName, college, profession, stuClass);
     }
 
     @RequestMapping("/updateStudent")
     public int updateStudent(String admin, String userId, String userName, String college, String profession, String stuClass) {
-        System.out.println("updateStudent:" + userId);
         return userService.updateStudent(admin, userId, userName, college, profession, stuClass);
     }
 
     @RequestMapping("/searchStudent")
     public List<User> searchStudent(String keywords) {
-        System.out.println("search:" + keywords);
         return userService.search(keywords);
+    }
+
+    @RequestMapping("/getFlag")
+    public boolean getFlag() {
+        return userService.getFlag();
+    }
+
+    @RequestMapping("/setFlag")
+    public boolean setFlag() {
+        return userService.setFlag();
+    }
+
+    @RequestMapping("/resetPwd")
+    public int resetPwd(String uid, String pwd) {
+        return userService.resetPwd(uid, pwd);
     }
 }

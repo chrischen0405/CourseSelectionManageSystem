@@ -14,11 +14,20 @@
     <text class='right'>{{userInfo.uname}}</text>
   </view>
   <view class='item' bindtap='resetpwd'>
-    <text class='left'> 密码：</text>
-    <text class='right'>重置</text>
+    <text class='left'> 修改密码</text>
+    <text class='right'>></text>
+  </view>
+  <view class='item' bindtap='getRecord'>
+    <text class='left'> 查看操作记录</text>
+    <text class='right'>></text>
+  </view>
+  <view class='item' bindtap='startSelect'>
+    <text class='left'> 是否开始选课</text>
+    <text wx:if='{{selectFlag}}' class='right'>是</text>
+    <text wx:else class='right'>否</text>
   </view>
   <view class='item' bindtap='exit'>
-    <text class='left'>退出：</text>
+    <text class='left'>退出</text>
     <text class='right'>>>></text>
   </view>
 </view>

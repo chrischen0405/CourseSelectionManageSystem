@@ -15,7 +15,6 @@ public class RecordController {
 
     @RequestMapping("/getAllRecord")
     public List<Record> getAllRecord() {
-        System.out.println("getAllRecord");
         return recordService.getAllRecord();
     }
 }

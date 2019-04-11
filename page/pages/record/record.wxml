@@ -1,4 +1,4 @@
-<!--pages/admin/record/record.wxml-->
+<!--pages/record/record.wxml-->
 <view wx:for="{{recordList}}">
   <view wx:if="{{item.operate=== '增加学生'||item.operate=== '删除学生'||item.operate=== '更新学生'}}" class='myCell'>
     {{item.date}}管理员{{item.uid}}{{item.operate}}学号{{item.oid}} 用户{{item.oname}}

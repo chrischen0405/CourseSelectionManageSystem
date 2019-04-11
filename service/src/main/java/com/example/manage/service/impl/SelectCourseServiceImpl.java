@@ -4,6 +4,7 @@ import com.example.manage.dao.CourseRepository;
 import com.example.manage.dao.RecordRepository;
 import com.example.manage.dao.SelectCourseRepository;
 import com.example.manage.model.Course;
+import com.example.manage.model.Flag;
 import com.example.manage.model.Record;
 import com.example.manage.model.SelectCourse;
 import com.example.manage.service.SelectCourseService;
@@ -31,6 +32,10 @@ public class SelectCourseServiceImpl implements SelectCourseService {
 
     @Override
     public int deleteById(String uid, int sid) {
+        Flag flag = Flag.getFlag();
+        if (!flag.getSelectCourseFlag()) {
+            return 2;
+        }
         SelectCourse selectCourse = selectCourseRepository.findBySid(sid);
         Course course = courseRepository.findByCid(selectCourse.getCid());
         Record record = new Record();
@@ -46,6 +51,10 @@ public class SelectCourseServiceImpl implements SelectCourseService {
 
     @Override
     public int selectCourse(String uid, int cid) {
+        Flag flag = Flag.getFlag();
+        if (!flag.getSelectCourseFlag()) {
+            return 2;
+        }
         SelectCourse selectCourse = new SelectCourse();
         selectCourse.setUid(uid);
         selectCourse.setCid(cid);

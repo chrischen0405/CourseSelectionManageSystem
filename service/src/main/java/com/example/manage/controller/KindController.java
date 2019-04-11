@@ -12,7 +12,11 @@ public class KindController {
 
     @RequestMapping("/addType")
     public int addType(String pname, String cnum, String type) {
-        System.out.println("addType " + cnum);
         return kindService.addType(pname, cnum, type);
+    }
+
+    @RequestMapping("/getCourseType")
+    public String getCourseType(String cnum, String profession) {
+        return kindService.getCourseType(cnum, profession);
     }
 }

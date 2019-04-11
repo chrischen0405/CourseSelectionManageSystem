@@ -14,6 +14,8 @@ public interface SelectCourseRepository extends JpaRepository<SelectCourse, Inte
 
     SelectCourse findBySid(int sid);
 
+    int countByCid(int cid);
+
     @Transactional
     int deleteBySid(int sid);
 

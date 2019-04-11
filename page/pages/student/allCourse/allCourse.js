@@ -16,6 +16,9 @@ Component({
     courseList: [],
     keywords: '',
     selectId: 0,
+    peopleNum: 0,
+    capacity: 0,
+    courseType: "公选课"
   },
 
   /**
@@ -27,34 +30,62 @@ Component({
       this.setData({
         selectId: this.data.courseList[num].cid
       });
-      console.log(num);
+      this.getCourseType(this.data.courseList[num].cnum);
       this.dialog = this.selectComponent("#dialog");
       const data = this.data;
-      const dialogContent = [{
-          label: '课程编号',
-          value: data.courseList[num].cnum
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/getPeopleNum',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
         },
-        {
-          label: '课程名称',
-          value: data.courseList[num].cname
+        data: {
+          'cid': that.data.selectId
         },
-        {
-          label: '课程容量',
-          value: data.courseList[num].capacity
+        success: function(res) {
+          that.setData({
+            peopleNum: res.data,
+            capacity: data.courseList[num].capacity
+          });
+          const dialogContent = [{
+              label: '课程编号',
+              value: data.courseList[num].cnum
+            },
+            {
+              label: '课程名称',
+              value: data.courseList[num].cname
+            },
+            {
+              label: '课程类型',
+              value: data.courseType
+            },
+            {
+              label: '课程人数',
+              value: data.peopleNum + '/' + data.courseList[num].capacity
+            },
+            {
+              label: '教师',
+              value: data.courseList[num].teacher
+            },
+            {
+              label: '上课时间',
+              value: that.getStrClassTime(utils.strToJSON(data.courseList[num].ctime))
+            }
+          ];
+          that.setData({
+            dialogContent: dialogContent
+          })
+          that.dialog.show();
         },
-        {
-          label: '教师',
-          value: data.courseList[num].teacher
-        },
-        {
-          label: '上课时间',
-          value: this.getStrClassTime(utils.strToJSON(data.courseList[num].ctime))
+        fail: function() {
+          wx.showToast({
+            title: '操作失败',
+            icon: 'none',
+            duration: 2000
+          });
         }
-      ];
-      this.setData({
-        dialogContent: dialogContent
       })
-      this.dialog.show();
     },
     // 点击了弹出框的取消
     handleCancelDialog() {
@@ -70,6 +101,7 @@ Component({
       wx.request({
         url: app.globalData.url + '/getAllCourse',
         success(res) {
+          console.log(res.data);
           that.setData({
             courseList: res.data,
           });
@@ -111,6 +143,14 @@ Component({
       }
     },
     selectCourse() {
+      if ((this.data.capacity - this.data.peopleNum) <= 0) {
+        wx.showToast({
+          title: '人数已满',
+          icon: 'none',
+          duration: 2000
+        });
+        return;
+      }
       wx.showLoading({
         title: '正在选课',
       });
@@ -134,10 +174,17 @@ Component({
               icon: 'none',
               duration: 2000
             });
-          } else {
+          } else if (resData == 0) {
             wx.hideLoading();
             wx.showToast({
               title: '该课程已选',
+              icon: 'none',
+              duration: 2000
+            });
+          } else if (resData == 2) {
+            wx.hideLoading();
+            wx.showToast({
+              title: '未到选课时间',
               icon: 'none',
               duration: 2000
             });
@@ -153,13 +200,40 @@ Component({
         }
       })
     },
-    getStrClassTime(arr) {//解析上课时间数组
+    getStrClassTime(arr) { //解析上课时间数组
       let str = '';
       for (let i = 0; i < arr.length; i++) {
         let obj = arr[i];
         str = str + '时段' + (i + 1) + '：' + obj.classroom + ' 星期' + obj.week + ' 第' + obj.cstart + '节课 ' + obj.time + '课时 ';
       }
       return str;
+    },
+    getCourseType(cnum) {//获取课程类型
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/getCourseType',
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: {
+          'cnum': cnum,
+          'profession': app.globalData.nowUser.profession
+        },
+        success: function(res) {
+          var resData = res.data;
+          that.setData({
+            courseType: resData
+          })
+        },
+        fail: function() {
+          wx.showToast({
+            title: '操作失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      })
     }
   }
 })

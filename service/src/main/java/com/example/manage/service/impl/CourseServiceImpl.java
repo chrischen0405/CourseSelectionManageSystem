@@ -102,4 +102,9 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> search(String keywords) {
         return courseRepository.findByCnumLikeOrCnameLike("%" + keywords + "%", "%" + keywords + "%");
     }
+
+    @Override
+    public int getPeopleNum(int cid) {
+        return selectCourseRepository.countByCid(cid);
+    }
 }

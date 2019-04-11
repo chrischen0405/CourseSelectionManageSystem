@@ -1,0 +1,16 @@
+<!--pages/resetPwd/resetPwd.wxml-->
+<view class='container'>
+  <view class='info'>
+    <label class='info-text'>新密码</label>
+    <view class='info-box'>
+      <input class='info-input' password='true' placeholder='请输入新密码' bindinput='input_pwd'></input>
+    </view>
+  </view>
+  <view class='info'>
+    <label class='info-text'>确认密码</label>
+    <view class='info-box'>
+      <input class='info-input' password='true' placeholder='请再次输入密码' bindinput='input_pwd2'></input>
+    </view>
+  </view>
+  <button class='submit' bindtap='submit'>确认修改</button>
+</view>

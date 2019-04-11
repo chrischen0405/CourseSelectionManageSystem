@@ -25,6 +25,11 @@ Component({
       });
       console.log(this.stuInfo);
     },
+    resetpwd() {
+      wx.navigateTo({
+        url: '../resetPwd/resetPwd',
+      })
+    },
     exit() {
       app.globalData.nowUser = null;
       wx.reLaunch({

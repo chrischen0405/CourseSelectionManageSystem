@@ -13,6 +13,7 @@ Component({
    */
   data: {
     userInfo: [],
+    selectFlag: false,
   },
 
   /**
@@ -23,7 +24,40 @@ Component({
       this.setData({
         userInfo: app.globalData.nowUser,
       });
-      console.log(this.userInfo);
+      console.log(app.globalData.nowUser);
+    },
+    getRecord() {
+      wx.navigateTo({
+        url: '../record/record',
+      })
+    },
+    getFlag() {
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/getFlag',
+        success(res) {
+          that.setData({
+            selectFlag: res.data,
+          })
+        }
+      })
+    },
+    startSelect() {
+      console.log('startSelect');
+      let that = this;
+      wx.request({
+        url: app.globalData.url + '/setFlag',
+        success(res) {
+          that.setData({
+            selectFlag: res.data,
+          })
+        }
+      })
+    },
+    resetpwd() {
+      wx.navigateTo({
+        url: '../resetPwd/resetPwd',
+      })
     },
     exit() {
       app.globalData.nowUser = null;

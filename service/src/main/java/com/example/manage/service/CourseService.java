@@ -16,4 +16,6 @@ public interface CourseService {
     int updateCourse(String admin, int courseId, String courseNum, String courseName, String courseTime, int capacity, String teacher, float credit);
 
     List<Course> search(String keywords);
+
+    int getPeopleNum(int cid);
 }

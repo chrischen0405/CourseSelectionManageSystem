@@ -34,5 +34,6 @@
       <input class='info-input' placeholder='请输入学生班级' value='{{stuClass}}' bindinput='input_class'></input>
     </view>
   </view>
+  <button class='submit' bindtap='resetPwd'>重置学生密码</button>
   <button class='submit' bindtap='submit'>提交</button>
 </view>

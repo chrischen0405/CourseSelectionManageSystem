@@ -3,6 +3,7 @@ package com.example.manage.service.impl;
 import com.example.manage.dao.RecordRepository;
 import com.example.manage.dao.SelectCourseRepository;
 import com.example.manage.dao.UserRepository;
+import com.example.manage.model.Flag;
 import com.example.manage.model.Record;
 import com.example.manage.model.User;
 import com.example.manage.service.UserService;
@@ -25,10 +26,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int loginType(String userid, String password) {
+        if (!userRepository.existsByUid(userid)) {
+            return 3;
+        }
         User user = userRepository.findByUidAndPwd(userid, password);
-        if (user.getType() == 1) {
+        if (user != null && user.getType() == 1) {
             return 1;
-        } else if (user.getType() == 2) {
+        } else if (user != null && user.getType() == 2) {
             return 2;
         } else {
             return 0;
@@ -111,5 +115,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> search(String keywords) {
         return userRepository.findByTypeAndUidLikeOrTypeAndUnameLike(2, "%" + keywords + "%", 2, "%" + keywords + "%");
+    }
+
+    @Override
+    public boolean getFlag() {
+        Flag flag = Flag.getFlag();
+        boolean f = flag.getSelectCourseFlag();
+        return f;
+    }
+
+    @Override
+    public boolean setFlag() {
+        Flag flag = Flag.getFlag();
+        boolean f = flag.getSelectCourseFlag();
+        f = !f;
+        flag.setSelectCourseFlag(f);
+        return f;
+    }
+
+    @Override
+    public int resetPwd(String uid, String pwd) {
+        return userRepository.resetPwd(uid, pwd);
     }
 }

@@ -21,7 +21,7 @@
   background: #fff;
 }
 
-.tab-first, .tab-second, .tab-fifth, .tab-sixth {
+.tab-first, .tab-second, .tab-fifth, .tab-seventh {
   z-index: 999;
   flex: 1;
   font-size: 32rpx;

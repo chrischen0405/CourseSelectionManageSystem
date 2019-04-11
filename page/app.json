@@ -4,7 +4,9 @@
     "pages/admin/admin",
     "pages/student/student",
     "pages/updateStudent/updateStudent",
-    "pages/updateCourse/updateCourse"
+    "pages/updateCourse/updateCourse",
+    "pages/record/record",
+    "pages/resetPwd/resetPwd"
   ],
   "window": {
     "backgroundTextStyle": "light",

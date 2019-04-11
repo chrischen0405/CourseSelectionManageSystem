@@ -22,7 +22,7 @@ Component({
       "ctime": 0,
       "cname": "",
       "classroom": "",
-      "teacher": ""
+      "teacher": "",
     }],
     recordList: null,
     tkId: 0,
@@ -156,6 +156,13 @@ Component({
             that.getCourseList();
             wx.showToast({
               title: '退课成功',
+              icon: 'none',
+              duration: 2000
+            });
+          } else if (resData == 2) {
+            wx.hideLoading();
+            wx.showToast({
+              title: '未到退课时间',
               icon: 'none',
               duration: 2000
             });

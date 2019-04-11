@@ -114,6 +114,34 @@ Page({
       profession: this.data.professionList[e.detail.value]
     })
   },
+  resetPwd() {
+    let that = this;
+    wx.request({
+      url: app.globalData.url + '/resetPwd',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        'uid': that.data.stuId,
+        'pwd': that.data.stuId
+      },
+      success: function(res) {
+        wx.showToast({
+          title: '密码重置成功',
+          icon: 'none',
+          duration: 2000
+        });
+      },
+      fail: function() {
+        wx.showToast({
+          title: '密码重置失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    })
+  },
   submit() {
     console.log(this.data);
     if (this.data.userName === '') {

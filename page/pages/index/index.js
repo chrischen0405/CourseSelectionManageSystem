@@ -21,11 +21,24 @@ Page({
       password: e.detail.value
     })
   },
-  login: function () {
+  login: function() {
+    if (this.data.userid === '') {
+      wx.showToast({
+        title: '请输入账号',
+        icon: 'none'
+      });
+      return;
+    }
+    if (this.data.password === '') {
+      wx.showToast({
+        title: '请输入密码',
+        icon: 'none'
+      });
+      return;
+    }
     wx.showLoading({
       title: '登录中',
-    })
-    console.log("点击按钮!" + "获取到的账号:" + this.data.userid + "获取到的密码:" + this.data.password);
+    });
     let that = this;
     wx.request({
       url: app.globalData.url + '/login',
@@ -37,51 +50,57 @@ Page({
         'userid': that.data.userid,
         'password': that.data.password
       },
-      success: function (res) {
+      success: function(res) {
         console.log("login:" + res.data);
         that.getOneUser(that.data.userid);
         var resData = res.data;
         if (resData === 1) {
           wx.hideLoading();
-          wx.showToast({
-            title: '登录成功',
-            icon: 'none',
-            duration: 2000
-          });
           wx.reLaunch({
             url: '../admin/admin'
-          })
-        } else if (resData === 2) {
-          wx.hideLoading();
+          });
           wx.showToast({
             title: '登录成功',
             icon: 'none',
             duration: 2000
           });
+        } else if (resData === 2) {
+          wx.hideLoading();
           wx.reLaunch({
             url: '../student/student'
-          })
+          });
+          wx.showToast({
+            title: '登录成功',
+            icon: 'none',
+            duration: 2000
+          });
+        } else if (resData === 3) {
+          wx.hideLoading();
+          wx.showToast({
+            title: '该用户不存在',
+            icon: 'none',
+            duration: 2000
+          });
         } else {
           wx.hideLoading();
           wx.showToast({
-            title: '登录失败',
+            title: '密码错误',
             icon: 'none',
             duration: 2000
           });
         }
       },
-      fail: function () {
+      fail: function() {
         wx.hideLoading();
         wx.showToast({
           title: '登录失败',
           icon: 'none',
           duration: 2000
         });
-        console.log('loginfail');
       }
     })
   },
-  getOneUser: function (userId) {
+  getOneUser: function(userId) {
     console.log("账号:" + userId);
     wx.request({
       url: app.globalData.url + '/getOneUser',
@@ -92,24 +111,24 @@ Page({
       data: {
         'userId': userId
       },
-      success: function (res) {
+      success: function(res) {
         app.globalData.nowUser = res.data;
         console.log(app.globalData.nowUser);
       },
-      fail: function () {
+      fail: function() {
         console.log('getOneUserfail');
       }
     })
   },
 
-  onLoad: function () {
+  onLoad: function() {
     if (app.globalData.userInfo) {
       console.log(app.globalData.userInfo);
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {

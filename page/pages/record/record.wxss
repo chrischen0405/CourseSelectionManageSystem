@@ -1,4 +1,4 @@
-/* pages/admin/record/record.wxss */
+/* pages/record/record.wxss */
 
 .myCell {
   padding-top: 20rpx;

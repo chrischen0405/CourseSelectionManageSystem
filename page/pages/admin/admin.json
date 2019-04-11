@@ -6,7 +6,6 @@
     "addCourse": "addCourse/addCourse",
     "addStudent": "addStudent/addStudent",
     "mCenter": "mCenter/mCenter",
-    "record": "record/record",
     "mKind": "mKind/mKind"
   }
 }
