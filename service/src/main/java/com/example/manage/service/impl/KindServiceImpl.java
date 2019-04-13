@@ -7,6 +7,8 @@ import com.example.manage.service.KindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class KindServiceImpl implements KindService {
     @Autowired
@@ -14,6 +16,11 @@ public class KindServiceImpl implements KindService {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Override
+    public List<Kind> getAllType() {
+        return kindRepository.findAll();
+    }
 
     @Override
     public int addType(String pname, String cnum, String type) {

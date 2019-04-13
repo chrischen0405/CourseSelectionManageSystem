@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>选课管理系统</title>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/href.js"></script>
+    <script src="js/mType.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css"/>
+</head>
+<body>
+<div id="wrap">
+    <div class="leftMeun" id="leftMeun">
+        <div id="logoDiv">
+            <p id="logoP"><span>选课管理系统</span></p>
+        </div>
+        <div id="personInfor">
+            <p id="userName">admin</p>
+            <p>
+                <a>退出登录</a>
+            </p>
+        </div>
+        <div id="mStudent" class="meun-item"><img src="images/icon_chara_grey.png">学生管理</div>
+        <div id="mCourse" class="meun-item"><img src="images/icon_house_grey.png">课程管理</div>
+        <div id="mType" class="meun-item meun-item-active"><img src="images/icon_card_grey.png">类型管理</div>
+        <div id="mSelect" class="meun-item"><img src="images/icon_user_grey.png">选课管理</div>
+        <div id="mRecord" class="meun-item"><img src="images/icon_source_grey.png">操作记录</div>
+        <div id="mCenter" class="meun-item"><img src="images/icon_change_grey.png">管理员中心</div>
+    </div>
+    <div id="rightContent">
+        <div class="tab-content">
+            <!--类型管理模块-->
+            <div role="tabpanel" class="tab-pane active">
+                <div class="check-div form-inline">
+                    <div class="col-xs-3">
+                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加课程类型</button>
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text" class="form-control input-sm" placeholder="输入关键字">
+                        <button class="btn btn-white btn-xs ">查 询</button>
+                    </div>
+                    <div class="col-xs-4 col-lg-4  col-md-5"
+                         style="padding-right: 40px;text-align: right;float: right;">
+                        <label>导入课程类型表:&nbsp;</label>
+                        <button class="btn btn-white btn-xs ">选取文件</button>
+                        <button class="btn btn-white btn-xs ">导入</button>
+                        <button class="btn btn-white btn-xs ">导出</button>
+                    </div>
+                </div>
+                <div class="data-div">
+                    <div class="row tableHeader">
+                        <div class="col-xs-3">
+                            课程号
+                        </div>
+                        <div class="col-xs-3">
+                            专业名称
+                        </div>
+                        <div class="col-xs-3">
+                            课程类型
+                        </div>
+                        <div class="col-xs-3">
+                            操作
+                        </div>
+                    </div>
+                    <div class="tablebody" id="tableBody">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
