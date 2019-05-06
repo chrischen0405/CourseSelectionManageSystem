@@ -18,6 +18,21 @@ public class KindController {
         return kindService.getAllType();
     }
 
+    @RequestMapping("/getOneType")
+    public Kind getOneType(int kid) {
+        return kindService.getOneType(kid);
+    }
+
+    @RequestMapping("/deleteTypeById")
+    public int deleteTypeById(int kid) {
+        return kindService.deleteTypeById(kid);
+    }
+
+    @RequestMapping("/updateType")
+    public int updateType(int kid, String pname, String cnum, String type) {
+        return kindService.updateType(kid, pname, cnum, type);
+    }
+
     @RequestMapping("/addType")
     public int addType(String pname, String cnum, String type) {
         return kindService.addType(pname, cnum, type);
@@ -27,4 +42,11 @@ public class KindController {
     public String getCourseType(String cnum, String profession) {
         return kindService.getCourseType(cnum, profession);
     }
+
+    @RequestMapping("/searchType")
+    public List<Kind> searchType(String keywords) {
+        return kindService.search(keywords);
+    }
+
+
 }

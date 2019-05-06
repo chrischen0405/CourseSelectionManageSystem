@@ -19,9 +19,9 @@
             <p id="logoP"><span>选课管理系统</span></p>
         </div>
         <div id="personInfor">
-            <p id="userName">admin</p>
+            <p id="userName">欢迎您</p>
             <p>
-                <a>退出登录</a>
+                <a id="exit">退出登录</a>
             </p>
         </div>
         <div id="mStudent" class="meun-item"><img src="images/icon_chara_grey.png">学生管理</div>
@@ -37,11 +37,11 @@
             <div role="tabpanel" class="tab-pane active">
                 <div class="check-div form-inline">
                     <div class="col-xs-3">
-                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加课程</button>
+                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addCourseModel">添加课程</button>
                     </div>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control input-sm" placeholder="输入课程号或课程名">
-                        <button class="btn btn-white btn-xs ">查 询</button>
+                        <input type="text" class="form-control input-sm" id="keyword" placeholder="输入课程号或课程名">
+                        <button class="btn btn-white btn-xs " id="search">查 询</button>
                     </div>
                     <div class="col-xs-4 col-lg-4  col-md-5"
                          style="padding-right: 40px;text-align: right;float: right;">
@@ -78,6 +78,100 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="addCourseModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">添加课程</h4>
+            </div>
+            <div class="modal-body" style="padding: 50px 100px;">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">课程号</span>
+                        <input type="text" class="form-control" id="cnum" placeholder="请输入课程号">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">课程名称</span>
+                        <input type="text" class="form-control" id="cname" placeholder="请输入课程名称">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">课程容量</span>
+                        <input type="text" class="form-control" id="capacity" placeholder="请输入课程容量">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">教师</span>
+                        <input type="text" class="form-control" id="teacher" placeholder="请输入教师名称">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">学分</span>
+                        <input type="text" class="form-control" id="credit" placeholder="请输入学分">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">上课时间</span>
+                        <input type="text" class="form-control" id="ctime" placeholder="请输入上课时间">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="addCourse">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="updateCourseModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">修改课程</h4>
+            </div>
+            <div class="modal-body" style="padding: 50px 100px;">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">课程号</span>
+                        <input type="text" class="form-control" id="cnum2" placeholder="请输入课程号">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">课程名称</span>
+                        <input type="text" class="form-control" id="cname2" placeholder="请输入课程名称">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">课程容量</span>
+                        <input type="text" class="form-control" id="capacity2" placeholder="请输入课程容量">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">教师</span>
+                        <input type="text" class="form-control" id="teacher2" placeholder="请输入教师名称">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">学分</span>
+                        <input type="text" class="form-control" id="credit2" placeholder="请输入学分">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">上课时间</span>
+                        <input type="text" class="form-control" id="ctime2" placeholder="请输入上课时间">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="updateCourse">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 </body>
 </html>

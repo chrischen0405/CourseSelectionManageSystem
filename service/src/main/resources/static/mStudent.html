@@ -19,9 +19,9 @@
             <p id="logoP"><span>选课管理系统</span></p>
         </div>
         <div id="personInfor">
-            <p id="userName">admin</p>
+            <p id="userName">欢迎您</p>
             <p>
-                <a>退出登录</a>
+                <a id="exit">退出登录</a>
             </p>
         </div>
         <div id="mStudent" class="meun-item meun-item-active"><img src="images/icon_chara_grey.png">学生管理</div>
@@ -37,11 +37,11 @@
             <div role="tabpanel" class="tab-pane active">
                 <div class="check-div form-inline">
                     <div class="col-xs-3">
-                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUser">添加学生</button>
+                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUserModel">添加学生</button>
                     </div>
                     <div class="col-xs-4">
-                        <input type="text" class="form-control input-sm" placeholder="输入学生学号或姓名">
-                        <button class="btn btn-white btn-xs ">查 询</button>
+                        <input type="text" class="form-control input-sm" id="keyword" placeholder="输入学生学号或姓名">
+                        <button class="btn btn-white btn-xs " id="search">查 询</button>
                     </div>
                     <div class="col-xs-4 col-lg-4  col-md-5"
                          style="padding-right: 40px;text-align: right;float: right;">
@@ -78,6 +78,90 @@
             </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="addUserModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">添加学生</h4>
+            </div>
+            <div class="modal-body" style="padding: 50px 100px;">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">学号</span>
+                        <input type="text" class="form-control" id="uid" placeholder="请输入学生学号">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">姓名</span>
+                        <input type="text" class="form-control" id="uname" placeholder="请输入学生姓名">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">分院</span>
+                        <input type="text" class="form-control" id="college" placeholder="请输入分院">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">专业</span>
+                        <input type="text" class="form-control" id="profession" placeholder="请输入专业">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">班级</span>
+                        <input type="text" class="form-control" id="stuClass" placeholder="请输入班级">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="addStudent">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="updateUserModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">修改学生</h4>
+            </div>
+            <div class="modal-body" style="padding: 50px 100px;">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="input-group">
+                        <span class="input-group-addon">学号</span>
+                        <input type="text" class="form-control" id="uid2" disabled="disabled">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">姓名</span>
+                        <input type="text" class="form-control" id="uname2" placeholder="请输入学生姓名">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">分院</span>
+                        <input type="text" class="form-control" id="college2" placeholder="请输入分院">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">专业</span>
+                        <input type="text" class="form-control" id="profession2" placeholder="请输入专业">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon">班级</span>
+                        <input type="text" class="form-control" id="stuClass2" placeholder="请输入班级">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="updateStudent">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 </body>
 </html>

@@ -20,6 +20,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     boolean existsByUid(String uid);
 
+    boolean existsByUidAndType(String uid, int type);
+
     User findByUid(String uid);
 
     List<User> findByTypeAndUidLikeOrTypeAndUnameLike(int type, String uid, int type2, String uname);

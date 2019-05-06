@@ -23,6 +23,30 @@ public class KindServiceImpl implements KindService {
     }
 
     @Override
+    public Kind getOneType(int kid) {
+        return kindRepository.findByKid(kid);
+    }
+
+    @Override
+    public int deleteTypeById(int kid) {
+        kindRepository.deleteByKid(kid);
+        if (kindRepository.existsByKid(kid)) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    @Override
+    public int updateType(int kid, String pname, String cnum, String type) {
+        if (!courseRepository.existsByCnum(cnum)) {
+            return 0;
+        }
+        kindRepository.updateType(kid, pname, cnum, type);
+        return 1;
+    }
+
+    @Override
     public int addType(String pname, String cnum, String type) {
         if (!courseRepository.existsByCnum(cnum)) {
             return 0;
@@ -40,10 +64,15 @@ public class KindServiceImpl implements KindService {
 
     @Override
     public String getCourseType(String cnum, String pname) {
-        if (!kindRepository.existsByCnumAndPname(cnum, pname)){
+        if (!kindRepository.existsByCnumAndPname(cnum, pname)) {
             return "公选课";
         }
-        Kind kind=kindRepository.findByCnumAndPname(cnum, pname);
+        Kind kind = kindRepository.findByCnumAndPname(cnum, pname);
         return kind.getType();
+    }
+
+    @Override
+    public List<Kind> search(String keywords) {
+        return kindRepository.findByCnumLikeOrPnameLikeOrTypeLike("%" + keywords + "%", "%" + keywords + "%", "%" + keywords + "%");
     }
 }

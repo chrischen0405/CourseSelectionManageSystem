@@ -17,4 +17,9 @@ public class RecordServiceImpl implements RecordService {
     public List<Record> getAllRecord() {
         return recordRepository.findAll();
     }
+
+    @Override
+    public List<Record> search(String keywords) {
+        return recordRepository.findByUidLike("%" + keywords + "%");
+    }
 }

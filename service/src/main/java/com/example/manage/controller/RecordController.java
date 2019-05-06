@@ -17,4 +17,9 @@ public class RecordController {
     public List<Record> getAllRecord() {
         return recordService.getAllRecord();
     }
+
+    @RequestMapping("/searchRecord")
+    public List<Record> searchRecord(String keywords) {
+        return recordService.search(keywords);
+    }
 }

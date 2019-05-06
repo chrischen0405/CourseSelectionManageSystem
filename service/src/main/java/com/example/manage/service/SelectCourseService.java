@@ -7,9 +7,19 @@ import java.util.List;
 public interface SelectCourseService {
     List<SelectCourse> findAll();
 
+    SelectCourse getOneSelect(int sid);
+
     int deleteById(String uid, int sid);
+
+    int managerDeleteRecord(int sid);
 
     int selectCourse(String uid, int cid);
 
+    int managerSelectCourse(String uid, int cid);
+
+    int updateSelectCourse(int sid, String uid, int cid);
+
     List<Object[]> courseList(String uid);
+
+    List<SelectCourse> search(String keywords);
 }

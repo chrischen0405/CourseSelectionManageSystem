@@ -18,9 +18,19 @@ public class SelectCourseController {
         return selectCourseService.findAll();
     }
 
+    @RequestMapping("/getOneSelect")
+    public SelectCourse getOneSelect(int sid) {
+        return selectCourseService.getOneSelect(sid);
+    }
+
     @RequestMapping("/deleteRecord")
     public int deleteRecord(String uid, int sid) {
         return selectCourseService.deleteById(uid, sid);
+    }
+
+    @RequestMapping("/managerDeleteRecord")
+    public int managerDeleteRecord(int sid) {
+        return selectCourseService.managerDeleteRecord(sid);
     }
 
     @RequestMapping("/selectCourse")
@@ -28,8 +38,23 @@ public class SelectCourseController {
         return selectCourseService.selectCourse(uid, cid);
     }
 
+    @RequestMapping("/managerSelectCourse")
+    public int managerSelectCourse(String uid, int cid) {
+        return selectCourseService.managerSelectCourse(uid, cid);
+    }
+
+    @RequestMapping("/updateSelectCourse")
+    public int updateSelectCourse(int sid, String uid, int cid) {
+        return selectCourseService.updateSelectCourse(sid, uid, cid);
+    }
+
     @RequestMapping("/courseList")
     public List<Object[]> courseList(String uid) {
         return selectCourseService.courseList(uid);
+    }
+
+    @RequestMapping("/searchSelect")
+    public List<SelectCourse> searchSelect(String keywords) {
+        return selectCourseService.search(keywords);
     }
 }

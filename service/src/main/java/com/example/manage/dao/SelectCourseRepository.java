@@ -37,4 +37,11 @@ public interface SelectCourseRepository extends JpaRepository<SelectCourse, Inte
     int deleteByCid(int cid);
 
     boolean existsByCid(int cid);
+
+    List<SelectCourse> findByUidLikeOrCidLike(String uid, int cid);
+
+    @Transactional
+    @Modifying
+    @Query(value = "update SelectCourse s set s.uid=:uid,s.cid=:cid where s.sid=:sid", nativeQuery = true)
+    int updateSelectCourse(@Param("sid") int sid, @Param("uid") String uid, @Param("cid") int cid);
 }

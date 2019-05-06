@@ -1,9 +1,9 @@
 <!--pages/admin/addCourse/addCourse.wxml-->
 <view class='container'>
   <view class='info'>
-    <label class='info-text'>课程编号</label>
+    <label class='info-text'>课程号</label>
     <view class='info-box'>
-      <input class='info-input' placeholder='请输入课程编号' bindinput='input_num'></input>
+      <input class='info-input' placeholder='请输入课程号' bindinput='input_num'></input>
     </view>
   </view>
   <view class='info'>

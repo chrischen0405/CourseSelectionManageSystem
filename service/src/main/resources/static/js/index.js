@@ -19,7 +19,7 @@ $(function () {
             },
             success: function (res) {
                 if (res === 1) {
-                    window.location.href = './mStudent.html'
+                    window.location.replace('./mStudent.html?uid=' + uid);
                 } else if ((res === 2) || (res === 3)) {
                     alert('账号不存在');
                 } else if (res === 0) {
