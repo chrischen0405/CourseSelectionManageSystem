@@ -26,6 +26,10 @@ public interface SelectCourseRepository extends JpaRepository<SelectCourse, Inte
             + " s.uid = :uid", nativeQuery = true)
     List<Object[]> findByUid(@Param("uid") String uid);
 
+    @Query(value = "select s.sid,s.cid,s.uid,s.sdate,c.cnum,c.cname,u.uname from select_course s,course c,user u"
+            + " where s.cid=c.cid and s.uid=u.uid", nativeQuery = true)
+    List<Object[]> findByUidAndCid();
+
     @Modifying
     @Transactional
     int deleteByUid(String uid);
@@ -38,7 +42,14 @@ public interface SelectCourseRepository extends JpaRepository<SelectCourse, Inte
 
     boolean existsByCid(int cid);
 
-    List<SelectCourse> findByUidLikeOrCidLike(String uid, int cid);
+    @Query(value = "select s.sid,s.cid,s.uid,s.sdate,c.cnum,c.cname,u.uname from select_course s,course c,user u"
+            + " where s.cid=c.cid and s.uid=u.uid and (s.cid=:cid or s.uid like :uid)", nativeQuery = true)
+    List<Object[]> findByUidLikeOrCidLike(String uid, int cid);
+
+    @Query(value = "select c.ctime from select_course s,course c"
+            + " where s.cid = c.cid and"
+            + " s.uid = :uid", nativeQuery = true)
+    List<String> findTimeListByUid(@Param("uid") String uid);
 
     @Transactional
     @Modifying

@@ -19,6 +19,11 @@ public class SelectCourseController {
         return selectCourseService.findAll();
     }
 
+    @RequestMapping("/getAllSelect")
+    public List<Object[]> getAllSelect() {
+        return selectCourseService.getAllSelect();
+    }
+
     @RequestMapping("/getOneSelect")
     public SelectCourse getOneSelect(int sid) {
         return selectCourseService.getOneSelect(sid);
@@ -55,7 +60,7 @@ public class SelectCourseController {
     }
 
     @RequestMapping("/searchSelect")
-    public List<SelectCourse> searchSelect(String keywords) {
+    public List<Object[]> searchSelect(String keywords) {
         return selectCourseService.search(keywords);
     }
 

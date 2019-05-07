@@ -3,7 +3,9 @@ $(function () {
     initData();
     $('#search').click(function () {
         let keyword = $("#keyword").val();
-        console.log(keyword);
+        if (keyword == '') {
+            window.location.reload();
+        }
         $.ajax({
             type: "GET",
             url: "http://localhost:8080/searchSelect",
@@ -107,7 +109,7 @@ $(function () {
 function initData() {
     $.ajax({
         type: "GET",
-        url: "http://localhost:8080/allRecord",
+        url: "http://localhost:8080/getAllSelect",
         success: function (res) {
             console.log(res);
             init(res);
@@ -120,11 +122,13 @@ function init(res) {
     let str = '';
     for (let i = 0; i < res.length; i++) {
         let row = '<div class="row">';
-        let sdate = '<div class="col-xs-4 ">' + res[i].sdate + '</div>';
-        let uid = '<div class="col-xs-2 ">' + res[i].uid + '</div>';
-        let cid = '<div class="col-xs-2 ">' + res[i].cid + '</div>';
-        let op = '<div class="col-xs-2"><button class="btn btn-success btn-xs" data-toggle="modal" data-target="#updateSelectModel" onclick="update(' + res[i].sid + ')">修改</button><button class="btn btn-danger btn-xs" onclick="deleteSelect(' + res[i].sid + ')">删除</button></div>';
-        row = row + sdate + uid + cid + op + '</div>';
+        let sdate = '<div class="col-xs-2 ">' + res[i][3] + '</div>';
+        let uid = '<div class="col-xs-2 ">' + res[i][2] + '</div>';
+        let uname = '<div class="col-xs-2 ">' + res[i][6] + '</div>';
+        let cid = '<div class="col-xs-2 ">' + res[i][1] + '</div>';
+        let cname = '<div class="col-xs-2 ">' + res[i][5] + '</div>';
+        let op = '<div class="col-xs-2"><button class="btn btn-success btn-xs" data-toggle="modal" data-target="#updateSelectModel" onclick="update(' + res[i][0] + ')">修改</button><button class="btn btn-danger btn-xs" onclick="deleteSelect(' + res[i][0] + ')">删除</button></div>';
+        row = row + sdate + uid + uname + cid + cname + op + '</div>';
         str += row;
     }
     $('#tableBody').append(str);

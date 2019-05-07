@@ -188,6 +188,13 @@ Component({
               icon: 'none',
               duration: 2000
             });
+          } else if (resData == 3) {
+            wx.hideLoading();
+            wx.showToast({
+              title: '与已选课程时间冲突',
+              icon: 'none',
+              duration: 2000
+            });
           }
         },
         fail: function() {

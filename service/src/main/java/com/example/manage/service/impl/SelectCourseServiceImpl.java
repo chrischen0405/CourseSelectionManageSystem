@@ -1,5 +1,8 @@
 package com.example.manage.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.example.manage.dao.CourseRepository;
 import com.example.manage.dao.RecordRepository;
 import com.example.manage.dao.SelectCourseRepository;
@@ -34,6 +37,11 @@ public class SelectCourseServiceImpl implements SelectCourseService {
     @Override
     public List<SelectCourse> findAll() {
         return selectCourseRepository.findAll();
+    }
+
+    @Override
+    public List<Object[]> getAllSelect() {
+        return selectCourseRepository.findByUidAndCid();
     }
 
     @Override
@@ -95,11 +103,39 @@ public class SelectCourseServiceImpl implements SelectCourseService {
         if (selectCourseRepository.existsByUidAndCid(uid, cid)) {
             return 0;
         } else {
+            if (!testSelectCourse(uid, course)) {
+                return 3;
+            }
             selectCourseRepository.save(selectCourse);
             recordRepository.save(record);
             return 1;
         }
     }
+
+    public boolean testSelectCourse(String uid, Course course) {
+        List<String> list = selectCourseRepository.findTimeListByUid(uid);
+        JSONArray newTime = JSON.parseArray(course.getCtime());
+        for (String ctime : list) {
+            JSONArray timeArr = JSON.parseArray(ctime);
+            for (Object obj : timeArr) {
+                for (Object obj1 : newTime) {
+                    JSONObject a = (JSONObject) obj;
+                    JSONObject b = (JSONObject) obj1;
+                    if (a.getIntValue("week") == b.getIntValue("week")) {
+                        int astart = a.getIntValue("cstart");
+                        int bstart = b.getIntValue("cstart");
+                        if (astart + a.getIntValue("time") <= bstart ||
+                                astart >= bstart + b.getIntValue("time")) {
+                            if (astart == bstart) return false;
+                            else continue;
+                        } else return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
 
     @Override
     public int managerSelectCourse(String uid, int cid) {
@@ -123,6 +159,9 @@ public class SelectCourseServiceImpl implements SelectCourseService {
         if (selectCourseRepository.existsByUidAndCid(uid, cid)) {
             return 0;
         } else {
+            if (!testSelectCourse(uid, course)) {
+                return 4;
+            }
             selectCourseRepository.save(selectCourse);
             recordRepository.save(record);
             return 1;
@@ -150,7 +189,7 @@ public class SelectCourseServiceImpl implements SelectCourseService {
     }
 
     @Override
-    public List<SelectCourse> search(String keywords) {
+    public List<Object[]> search(String keywords) {
         return selectCourseRepository.findByUidLikeOrCidLike("%" + keywords + "%", Integer.parseInt(keywords));
     }
 

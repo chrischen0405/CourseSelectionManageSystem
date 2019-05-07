@@ -8,6 +8,8 @@ import java.util.List;
 public interface SelectCourseService {
     List<SelectCourse> findAll();
 
+    List<Object[]> getAllSelect();
+
     SelectCourse getOneSelect(int sid);
 
     int deleteById(String uid, int sid);
@@ -22,7 +24,7 @@ public interface SelectCourseService {
 
     List<Object[]> courseList(String uid);
 
-    List<SelectCourse> search(String keywords);
+    List<Object[]> search(String keywords);
 
     void export(String path, HttpServletResponse response);
 
