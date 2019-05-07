@@ -135,14 +135,23 @@ function init(res) {
     $('#tableBody').empty();
     let str = '';
     for (let i = 0; i < res.length; i++) {
+        let objTime = JSON.parse(res[i].ctime);
+        let strTime = '';
+        for (let j = 0; j < objTime.length; j++) {
+            strTime += objTime[j].classroom + ':';
+            strTime += '星期' + objTime[j].week + ',';
+            strTime += '第' + objTime[j].cstart + '节课,';
+            strTime += objTime[j].time + '课时 ';
+        }
         let row = '<div class="row">';
         let cnum = '<div class="col-xs-1 ">' + res[i].cnum + '</div>';
         let cname = '<div class="col-xs-1 ">' + res[i].cname + '</div>';
-        let ctime = '<div class="col-xs-7 ">' + res[i].ctime + '</div>';
+        let teacher = '<div class="col-xs-1 ">' + res[i].teacher + '</div>';
+        let ctime = '<div class="col-xs-6 ">' + strTime + '</div>';
         let credit = '<div class="col-xs-1 ">' + res[i].credit + '</div>';
         let capacity = '<div class="col-xs-1 ">' + res[i].capacity + '</div>';
         let op = '<div class="col-xs-1"><button class="btn btn-success btn-xs" data-toggle="modal" data-target="#updateCourseModel" onclick="update(' + res[i].cid + ')">修改</button><button class="btn btn-danger btn-xs" onclick="deleteCourse(' + res[i].cid + ')">删除</button></div>';
-        row = row + cnum + cname + ctime + credit + capacity + op + '</div>';
+        row = row + cnum + cname + teacher + ctime + credit + capacity + op + '</div>';
         str += row;
     }
     $('#tableBody').append(str);

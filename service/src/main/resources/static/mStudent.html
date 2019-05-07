@@ -7,10 +7,12 @@
     <title>选课管理系统</title>
     <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.min.js"></script>
     <script src="js/href.js"></script>
     <script src="js/mStudent.js"></script>
     <link rel="stylesheet" type="text/css" href="css/lib/common.css"/>
     <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css"/>
+    <link href="https://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.min.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrap">
@@ -37,7 +39,8 @@
             <div role="tabpanel" class="tab-pane active">
                 <div class="check-div form-inline">
                     <div class="col-xs-3">
-                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUserModel">添加学生</button>
+                        <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addUserModel">添加学生
+                        </button>
                     </div>
                     <div class="col-xs-4">
                         <input type="text" class="form-control input-sm" id="keyword" placeholder="输入学生学号或姓名">
@@ -98,14 +101,14 @@
                         <input type="text" class="form-control" id="uname" placeholder="请输入学生姓名">
                     </div>
                     <br>
-                    <div class="input-group">
-                        <span class="input-group-addon">分院</span>
-                        <input type="text" class="form-control" id="college" placeholder="请输入分院">
+                    <div>
+                        <select class="selectpicker" data-live-search="true" id="sCollege"></select>
                     </div>
                     <br>
-                    <div class="input-group">
-                        <span class="input-group-addon">专业</span>
-                        <input type="text" class="form-control" id="profession" placeholder="请输入专业">
+                    <div>
+                        <select class="selectpicker" data-live-search="true" id="sPro">
+                            <option value="">请选择专业</option>
+                        </select>
                     </div>
                     <br>
                     <div class="input-group">
@@ -121,11 +124,12 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<div class="modal fade" id="updateUserModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateUserModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="close">&times;</button>
                 <h4 class="modal-title">修改学生</h4>
             </div>
             <div class="modal-body" style="padding: 50px 100px;">
@@ -139,15 +143,26 @@
                         <span class="input-group-addon">姓名</span>
                         <input type="text" class="form-control" id="uname2" placeholder="请输入学生姓名">
                     </div>
+                    <!--<br>-->
+                    <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">分院</span>-->
+                    <!--<input type="text" class="form-control" id="college2" placeholder="请输入分院">-->
+                    <!--</div>-->
+                    <!--<br>-->
+                    <!--<div class="input-group">-->
+                    <!--<span class="input-group-addon">专业</span>-->
+                    <!--<input type="text" class="form-control" id="profession2" placeholder="请输入专业">-->
+                    <!--</div>-->
+                    <!--<br>-->
                     <br>
-                    <div class="input-group">
-                        <span class="input-group-addon">分院</span>
-                        <input type="text" class="form-control" id="college2" placeholder="请输入分院">
+                    <div>
+                        <select class="selectpicker" data-live-search="true" id="sCollege2"></select>
                     </div>
                     <br>
-                    <div class="input-group">
-                        <span class="input-group-addon">专业</span>
-                        <input type="text" class="form-control" id="profession2" placeholder="请输入专业">
+                    <div>
+                        <select class="selectpicker" data-live-search="true" id="sPro2">
+                            <option value="">请选择专业</option>
+                        </select>
                     </div>
                     <br>
                     <div class="input-group">
@@ -157,7 +172,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close2">取消</button>
                 <button type="button" class="btn btn-primary" id="updateStudent">确定</button>
             </div>
         </div><!-- /.modal-content -->
