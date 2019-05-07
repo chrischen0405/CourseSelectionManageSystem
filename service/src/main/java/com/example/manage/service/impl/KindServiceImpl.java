@@ -88,6 +88,11 @@ public class KindServiceImpl implements KindService {
     public void imports(String path, HttpServletResponse response) {
         List<Kind> list = null;
         list = ExcelService.importExcel(path, 1, 1, Kind.class);
-        kindRepository.saveAll(list);
+        for (Kind kind : list) {
+            if (kindRepository.existsByCnumAndPname(kind.getCnum(), kind.getPname()))
+                continue;
+            else
+                kindRepository.save(kind);
+        }
     }
 }

@@ -120,6 +120,11 @@ public class CourseServiceImpl implements CourseService {
     public void imports(String path, HttpServletResponse response) {
         List<Course> list = null;
         list = ExcelService.importExcel(path, 1, 1, Course.class);
-        courseRepository.saveAll(list);
+        for (Course course : list) {
+            if (courseRepository.existsByCnumAndCnameAndTeacher(course.getCnum(), course.getCname(), course.getTeacher()))
+                continue;
+            else
+                courseRepository.save(course);
+        }
     }
 }

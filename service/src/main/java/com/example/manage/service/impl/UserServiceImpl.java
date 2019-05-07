@@ -150,6 +150,10 @@ public class UserServiceImpl implements UserService {
     public void imports(String path, HttpServletResponse response) {
         List<User> list = null;
         list = ExcelService.importExcel(path, 1, 1, User.class);
-        userRepository.saveAll(list);
+        for (User user : list) {
+            user.setPwd(user.getUid());
+            if (userRepository.existsByUid(user.getUid())) continue;
+            else userRepository.save(user);
+        }
     }
 }
