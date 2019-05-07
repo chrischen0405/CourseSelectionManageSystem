@@ -3,10 +3,12 @@ package com.example.manage.service.impl;
 import com.example.manage.dao.CourseRepository;
 import com.example.manage.dao.KindRepository;
 import com.example.manage.model.Kind;
+import com.example.manage.service.ExcelService;
 import com.example.manage.service.KindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Service
@@ -74,5 +76,18 @@ public class KindServiceImpl implements KindService {
     @Override
     public List<Kind> search(String keywords) {
         return kindRepository.findByCnumLikeOrPnameLikeOrTypeLike("%" + keywords + "%", "%" + keywords + "%", "%" + keywords + "%");
+    }
+
+    @Override
+    public void export(String path, HttpServletResponse response) {
+        List<Kind> list = kindRepository.findAll();
+        ExcelService.exportExcel(list, "type", "type", Kind.class, "type.xls", response);
+    }
+
+    @Override
+    public void imports(String path, HttpServletResponse response) {
+        List<Kind> list = null;
+        list = ExcelService.importExcel(path, 1, 1, Kind.class);
+        kindRepository.saveAll(list);
     }
 }

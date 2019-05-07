@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -56,5 +57,17 @@ public class SelectCourseController {
     @RequestMapping("/searchSelect")
     public List<SelectCourse> searchSelect(String keywords) {
         return selectCourseService.search(keywords);
+    }
+
+    @RequestMapping("/importSelect")
+    public void importSelect(String path, HttpServletResponse response) {
+        path = "C:\\Users\\chenwenjie\\Desktop\\select.xls";
+        selectCourseService.imports(path, response);
+    }
+
+    @RequestMapping("/exportSelect")
+    public void exportSelect(String path, HttpServletResponse response) {
+//        path = "C:\\Users\\chenwenjie\\Desktop";
+        selectCourseService.export(path, response);
     }
 }

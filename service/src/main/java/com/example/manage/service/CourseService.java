@@ -2,6 +2,7 @@ package com.example.manage.service;
 
 import com.example.manage.model.Course;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface CourseService {
@@ -18,4 +19,8 @@ public interface CourseService {
     List<Course> search(String keywords);
 
     int getPeopleNum(int cid);
+
+    void export(String path, HttpServletResponse response);
+
+    void imports(String path, HttpServletResponse response);
 }

@@ -6,10 +6,12 @@ import com.example.manage.dao.UserRepository;
 import com.example.manage.model.Flag;
 import com.example.manage.model.Record;
 import com.example.manage.model.User;
+import com.example.manage.service.ExcelService;
 import com.example.manage.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -136,5 +138,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public int resetPwd(String uid, String pwd) {
         return userRepository.resetPwd(uid, pwd);
+    }
+
+    @Override
+    public void export(String path, HttpServletResponse response) {
+        List<User> list = userRepository.findAll();
+        ExcelService.exportExcel(list, "user", "user", User.class, "user.xls", response);
+    }
+
+    @Override
+    public void imports(String path, HttpServletResponse response) {
+        List<User> list = null;
+        list = ExcelService.importExcel(path, 1, 1, User.class);
+        userRepository.saveAll(list);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -61,5 +62,17 @@ public class UserController {
     @RequestMapping("/resetPwd")
     public int resetPwd(String uid, String pwd) {
         return userService.resetPwd(uid, pwd);
+    }
+
+    @RequestMapping("/importUser")
+    public void importUser(String path, HttpServletResponse response) {
+        path = "C:\\Users\\chenwenjie\\Desktop\\user.xls";
+        userService.imports(path, response);
+    }
+
+    @RequestMapping("/exportUser")
+    public void exportUser(String path, HttpServletResponse response) {
+//        path = "C:\\Users\\chenwenjie\\Desktop";
+        userService.export(path, response);
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -48,5 +49,15 @@ public class KindController {
         return kindService.search(keywords);
     }
 
+    @RequestMapping("/importType")
+    public void importType(String path, HttpServletResponse response) {
+        path = "C:\\Users\\chenwenjie\\Desktop\\type.xls";
+        kindService.imports(path, response);
+    }
 
+    @RequestMapping("/exportType")
+    public void exportType(String path, HttpServletResponse response) {
+//        path = "C:\\Users\\chenwenjie\\Desktop";
+        kindService.export(path, response);
+    }
 }

@@ -8,10 +8,12 @@ import com.example.manage.model.Course;
 import com.example.manage.model.Flag;
 import com.example.manage.model.Record;
 import com.example.manage.model.SelectCourse;
+import com.example.manage.service.ExcelService;
 import com.example.manage.service.SelectCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -150,5 +152,18 @@ public class SelectCourseServiceImpl implements SelectCourseService {
     @Override
     public List<SelectCourse> search(String keywords) {
         return selectCourseRepository.findByUidLikeOrCidLike("%" + keywords + "%", Integer.parseInt(keywords));
+    }
+
+    @Override
+    public void export(String path, HttpServletResponse response) {
+        List<SelectCourse> list = selectCourseRepository.findAll();
+        ExcelService.exportExcel(list, "select", "select", SelectCourse.class, "select.xls", response);
+    }
+
+    @Override
+    public void imports(String path, HttpServletResponse response) {
+        List<SelectCourse> list = null;
+        list = ExcelService.importExcel(path, 1, 1, SelectCourse.class);
+        selectCourseRepository.saveAll(list);
     }
 }

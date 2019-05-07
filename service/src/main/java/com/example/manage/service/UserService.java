@@ -2,6 +2,7 @@ package com.example.manage.service;
 
 import com.example.manage.model.User;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface UserService {
@@ -24,4 +25,8 @@ public interface UserService {
     boolean setFlag();
 
     int resetPwd(String uid,String pwd);
+
+    void export(String path, HttpServletResponse response);
+
+    void imports(String path, HttpServletResponse response);
 }

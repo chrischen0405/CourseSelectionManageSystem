@@ -161,6 +161,23 @@ $(function () {
     $('#close2').click(function () {
         window.location.reload();
     });
+    $('#exportStu').click(function () {
+        window.location.href = 'http://localhost:8080/exportUser';
+    });
+    $('#importStu').click(function () {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/importUser",
+            success: function (res) {
+                console.log(res);
+                window.location.reload();
+            },
+            fail: function (e) {
+                console.log(e);
+                window.location.reload();
+            }
+        });
+    });
 });
 
 function initData() {

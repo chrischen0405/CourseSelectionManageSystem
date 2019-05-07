@@ -6,9 +6,11 @@ import com.example.manage.dao.SelectCourseRepository;
 import com.example.manage.model.Course;
 import com.example.manage.model.Record;
 import com.example.manage.service.CourseService;
+import com.example.manage.service.ExcelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -106,5 +108,18 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public int getPeopleNum(int cid) {
         return selectCourseRepository.countByCid(cid);
+    }
+
+    @Override
+    public void export(String path, HttpServletResponse response) {
+        List<Course> list = courseRepository.findAll();
+        ExcelService.exportExcel(list, "course", "course", Course.class, "course.xls", response);
+    }
+
+    @Override
+    public void imports(String path, HttpServletResponse response) {
+        List<Course> list = null;
+        list = ExcelService.importExcel(path, 1, 1, Course.class);
+        courseRepository.saveAll(list);
     }
 }

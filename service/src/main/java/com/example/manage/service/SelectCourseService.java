@@ -2,6 +2,7 @@ package com.example.manage.service;
 
 import com.example.manage.model.SelectCourse;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface SelectCourseService {
@@ -22,4 +23,8 @@ public interface SelectCourseService {
     List<Object[]> courseList(String uid);
 
     List<SelectCourse> search(String keywords);
+
+    void export(String path, HttpServletResponse response);
+
+    void imports(String path, HttpServletResponse response);
 }

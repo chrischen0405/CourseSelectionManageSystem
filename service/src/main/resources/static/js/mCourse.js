@@ -118,6 +118,23 @@ $(function () {
             }
         });
     });
+    $('#exportCourse').click(function () {
+        window.location.href = 'http://localhost:8080/exportCourse';
+    });
+    $('#importCourse').click(function () {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/importCourse",
+            success: function (res) {
+                console.log(res);
+                window.location.reload();
+            },
+            fail: function (e) {
+                console.log(e);
+                window.location.reload();
+            }
+        });
+    });
 })
 
 function initData() {

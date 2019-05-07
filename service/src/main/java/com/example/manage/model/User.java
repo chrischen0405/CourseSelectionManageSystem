@@ -1,5 +1,7 @@
 package com.example.manage.model;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,18 +16,24 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long No;
+    @Excel(name = "学号", orderNum = "0")
     @Column(nullable = false, unique = true)
     private String uid;
+    @Excel(name = "姓名", orderNum = "1")
     @Column(nullable = false, unique = false)
     private String uname;
     @Column(nullable = false, unique = false)
     private String pwd;
+    @Excel(name = "类型", orderNum = "2")
     @Column(nullable = false, unique = false)
     private int type;
+    @Excel(name = "分院", orderNum = "3")
     @Column(nullable = true, unique = false)
     private String college;
+    @Excel(name = "专业", orderNum = "4")
     @Column(nullable = true, unique = false)
     private String profession;
+    @Excel(name = "班级", orderNum = "5")
     @Column(nullable = true, unique = false)
     private String stuClass;
     @Column(nullable = true, unique = true)

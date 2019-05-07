@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -46,5 +47,17 @@ public class CourseController {
     @RequestMapping("/getPeopleNum")
     public int getPeopleNum(int cid) {
         return courseService.getPeopleNum(cid);
+    }
+
+    @RequestMapping("/importCourse")
+    public void importCourse(String path, HttpServletResponse response) {
+        path = "C:\\Users\\chenwenjie\\Desktop\\course.xls";
+        courseService.imports(path, response);
+    }
+
+    @RequestMapping("/exportCourse")
+    public void exportCourse(String path, HttpServletResponse response) {
+//        path = "C:\\Users\\chenwenjie\\Desktop";
+        courseService.export(path, response);
     }
 }
