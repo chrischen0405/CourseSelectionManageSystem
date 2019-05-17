@@ -174,6 +174,13 @@ Component({
               icon: 'none',
               duration: 2000
             });
+          } else if (resData == 4) {
+            wx.hideLoading();
+            wx.showToast({
+              title: '人数已满',
+              icon: 'none',
+              duration: 2000
+            });
           } else if (resData == 0) {
             wx.hideLoading();
             wx.showToast({
@@ -215,7 +222,7 @@ Component({
       }
       return str;
     },
-    getCourseType(cnum) {//获取课程类型
+    getCourseType(cnum) { //获取课程类型
       let that = this;
       wx.request({
         url: app.globalData.url + '/getCourseType',

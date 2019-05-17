@@ -94,6 +94,9 @@ public class SelectCourseServiceImpl implements SelectCourseService {
         selectCourse.setCid(cid);
         selectCourse.setSdate(new Date());
         Course course = courseRepository.findByCid(cid);
+        if (selectCourseRepository.countByCid(cid) >= course.getCapacity()) {
+            return 4;
+        }
         Record record = new Record();
         record.setUid(uid);
         record.setDate(selectCourse.getSdate());
